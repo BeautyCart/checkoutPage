@@ -6,7 +6,8 @@ const productSchema = new Schema({
   brand: String,
   itemName: String,
   reviews: Number,
-  hearts: Number
+  hearts: Number,
+  options: Array
 }, {autoCreate: true})
 
 const Product = db.model('Product', productSchema)

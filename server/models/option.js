@@ -8,3 +8,5 @@ const optionsSchema = new Schema({
 }, {autoCreate: true})
 
 const Option = mongoose.model('Option', optionSchema)
+
+module.exports = Option;
