@@ -9,4 +9,10 @@ app.get('/product', (req, res) => {
     .catch((err) => res.sendStatus(400));
 })
 
+app.get('/product/:productId', (req, res) => {
+  Product.find({_id: req.params.productId})
+    .then((product) => res.send(product))
+    .catch((err) => res.sendStatus(400));
+})
+
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
