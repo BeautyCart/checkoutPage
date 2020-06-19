@@ -2,7 +2,7 @@ let faker = require('faker');
 let Product = require('../models/product.js');
 const { db } = require('../models/product.js');
 
-db.dropCollection('products', (err, res) => console.log('dropped previous products collection')
+db.dropCollection('products', (err, res) => console.log('dropped previous products collection'))
 
 const getRandomInt = (min, max) => {
   return Math.random() * (max - min) + min;
