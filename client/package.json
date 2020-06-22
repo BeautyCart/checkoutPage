@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack -w webpack.config.js"
+    "start": "webpack -w webpack.config.js",
+    "test": "jest --collect-coverage"
   },
   "author": "Jennifer Xiong",
   "license": "ISC",
