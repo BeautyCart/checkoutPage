@@ -11,7 +11,7 @@ class App extends React.Component{
     this.state = {
       currentItem:{},
       carouselItems:[],
-      optionChosen:''
+      optionChosen:undefined
     }
     this.getProducts = this.getProducts.bind(this);
     this.setRandomProduct = this.setRandomProduct.bind(this);
@@ -34,6 +34,12 @@ class App extends React.Component{
   getRandomIndex(min, max){
     return Math.floor(Math.random() * (max - min) + min);
   }
+  
+  setRandomProduct(productsData) {
+    console.log('inside set random product')
+    const index = this.getRandomIndex(0, productsData.length - 1);
+    return this.setCurrentItem(productsData[index])
+  }
 
   setCurrentItem(productData) {
     this.setState({
@@ -41,13 +47,7 @@ class App extends React.Component{
     })
     return productData
   }
-
-  setRandomProduct(productsData) {
-    console.log('inside set random product')
-    const index = this.getRandomIndex(0, productsData.length - 1);
-    return this.setCurrentItem(productsData[index])
-  }
-
+  
   setOptionChosen(option, index) {
     console.log('inside set option', option)
     this.setState({
@@ -55,9 +55,9 @@ class App extends React.Component{
     })
     return;
   }
-
+  
   handleOptionClick(option) {
-    this.setOption(option);
+    this.setOptionChosen(option, index);
   }
 
   render() {

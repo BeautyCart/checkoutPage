@@ -17,4 +17,12 @@ app.get('/product/:productId', (req, res) => {
     .catch((err) => res.sendStatus(400));
 })
 
+// const random = Math.floor(Math.random() * count)
+
+// app.get('/randomProduct', (req, res) => {
+//   Product.findOne(random).skip()
+//     .then((product) => res.send(product))
+//     .catch((err) => res.sendStatus(400))
+// })
+
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
