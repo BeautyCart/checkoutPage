@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 function ItemInfo(props) {
-  console.log('props',props)
-  let productInfo;
+  // console.log('props',props)
   if(props.optionChosenIndex !== undefined) {
     // console.log('should not be empty {}')
     console.log('should be the item', props.item.brand)
@@ -22,7 +21,7 @@ function ItemInfo(props) {
             </div>
             )
   } else {
-    console.log('inside else')
+    // console.log('inside else')
     return( 
           <div>
             <span>
