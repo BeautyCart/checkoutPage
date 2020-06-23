@@ -1,5 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ItemInfo from './ItemInfo.jsx';
+import ItemCheckout from './ItemCheckout.jsx'
+import Options from './Options.jsx'
 
 class App extends React.Component{
   constructor(props) {
@@ -7,7 +10,11 @@ class App extends React.Component{
   }
   render() {
     return (
-      <div>Hello World</div>
+      <div>
+        <ItemInfo />
+        <ItemCheckout/>
+        <Options />
+      </div>
     )
   }
 }
