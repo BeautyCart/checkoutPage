@@ -11,7 +11,7 @@ class App extends React.Component{
     this.state = {
       currentItem:{},
       carouselItems:[],
-      optionChosen:undefined
+      optionChosenIndex:undefined
     }
     this.getProducts = this.getProducts.bind(this);
     this.setRandomProduct = this.setRandomProduct.bind(this);
@@ -23,7 +23,7 @@ class App extends React.Component{
     console.log('component did mount')
     this.getProducts()
       .then((response) => this.setRandomProduct(response.data))
-      .then((currentItem) => this.setOptionChosen(currentItem.options[0], 0))
+      .then((currentItem) => this.setOptionChosenIndex(0))
       .catch((err) => console.log('Error getting random product', err))
   }
 
@@ -48,24 +48,23 @@ class App extends React.Component{
     return productData
   }
   
-  setOptionChosen(option, index) {
-    console.log('inside set option', option)
+  setOptionChosenIndex(index) {
     this.setState({
-      optionChosen: {description: option, index: index}
+      optionChosenIndex: index
     })
     return;
   }
   
   handleOptionClick(option) {
-    this.setOptionChosen(option, index);
+    this.setOptionChosenIndex(index);
   }
 
   render() {
     return (
       <div>
         <ItemInfo item={this.state.currentItem}/>
-        <ItemCheckout item={this.state.currentItem} optionChosen={this.state.optionChosen}/>
-        <Options options={this.state.currentItem.options} optionChosen={this.state.optionChosen} handleOptionClick={this.handleOptionClick}/>
+        <ItemCheckout item={this.state.currentItem} optionChosen={this.state.optionChosenIndex}/>
+        <Options options={this.state.currentItem.options} optionChosenIndex={this.state.optionChosenIndex} handleOptionClick={this.handleOptionClick}/>
       </div>
     )
   }

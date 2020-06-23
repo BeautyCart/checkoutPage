@@ -2,21 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 function Options(props) {
-  console.log('PROPS', props)
+  console.log('props', props)
   let displayOptions;
   let displayOptionChosen;
-  if (props.optionChosen) {
-    console.log("LABEL", props.optionChosen.description.label, "AMOUNT", props.optionChosen.description.amount)
-    displayOptionChosen = <p>SIZE: {props.optionChosen.description.amount}</p>
+  if (props.optionChosenIndex >= 0) {
+    console.log('should display option chosen', props.options[props.optionChosenIndex].amount)
+    displayOptionChosen = <p>SIZE: {props.options[props.optionChosenIndex].amount}</p>
   } else {
     displayOptionChosen = <p>Loading...</p>
   }
   if(props.options) {
-    displayOptions = props.options.map((option) => <button>{option.label} {option.amount}</button>)
+    displayOptions = props.options.map((option, index) => <button value={index}>{option.label} {option.amount}</button>)
   } else {
     displayOptions = <div>Loading....</div>
   }
-
   return (
     <div>
       {displayOptionChosen}
