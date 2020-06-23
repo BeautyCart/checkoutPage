@@ -55,7 +55,7 @@ class App extends React.Component{
     return;
   }
   
-  handleOptionClick(option) {
+  handleOptionClick(index) {
     this.setOptionChosenIndex(index);
   }
 
