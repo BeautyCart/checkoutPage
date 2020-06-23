@@ -9,7 +9,8 @@ class App extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      currentItem:{}
+      currentItem:{},
+      carouselItems:[]
     }
     this.getProducts = this.getProducts.bind(this);
     this.setRandomProduct = this.setRandomProduct.bind(this);
@@ -45,9 +46,9 @@ class App extends React.Component{
   render() {
     return (
       <div>
-        <ItemInfo />
-        <ItemCheckout/>
-        <Options />
+        <ItemInfo item={this.state.currentItem}/>
+        <ItemCheckout options={this.state.currentItem.options}/>
+        <Options options={this.state.currentItem.options}/>
       </div>
     )
   }
