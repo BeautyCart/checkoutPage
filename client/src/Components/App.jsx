@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ItemInfo from './ItemInfo.jsx';
 import ItemCheckout from './ItemCheckout.jsx';
 import Options from './Options.jsx';
@@ -62,8 +61,8 @@ class App extends React.Component{
   render() {
     return (
       <div>
-        <ItemInfo item={this.state.currentItem}/>
-        <ItemCheckout item={this.state.currentItem} optionChosen={this.state.optionChosenIndex}/>
+        <ItemInfo item={this.state.currentItem} optionChosenIndex={this.state.optionChosenIndex}/>
+        <ItemCheckout item={this.state.currentItem} optionChosenIndex={this.state.optionChosenIndex}/>
         <Options options={this.state.currentItem.options} optionChosenIndex={this.state.optionChosenIndex} handleOptionClick={this.handleOptionClick}/>
       </div>
     )
