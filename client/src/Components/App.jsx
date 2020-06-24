@@ -34,7 +34,7 @@ class App extends React.Component {
   }
 
   setRandomProduct(productsData) {
-    console.log('inside set random product');
+    // console.log('inside set random product');
     const index = App.getRandomIndex(0, productsData.length - 1);
     return this.setCurrentItem(productsData[index]);
   }

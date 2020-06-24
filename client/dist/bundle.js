@@ -33777,7 +33777,7 @@ var App = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "setRandomProduct",
     value: function setRandomProduct(productsData) {
-      console.log('inside set random product');
+      // console.log('inside set random product');
       var index = App.getRandomIndex(0, productsData.length - 1);
       return this.setCurrentItem(productsData[index]);
     }
