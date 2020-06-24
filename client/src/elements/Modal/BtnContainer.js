@@ -5,4 +5,4 @@ export default styled.div`
   margin-left: -8px;
   margin-right: -8px;
   flex-flow: row wrap;
-`
+`;

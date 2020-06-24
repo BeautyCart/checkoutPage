@@ -5,7 +5,7 @@ function Carousel() {
     <div>
       Hello Carousel
     </div>
-  )
+  );
 }
 
 export default Carousel;

@@ -5,7 +5,7 @@ function ItemInfo() {
     <div>
       Hello ItemInfo
     </div>
-  )
+  );
 }
 
-export default ItemInfo
+export default ItemInfo;

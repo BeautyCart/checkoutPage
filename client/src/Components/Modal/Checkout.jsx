@@ -1,7 +1,7 @@
 import React from 'react';
-import CheckoutButton from '../../elements/Modal/CheckoutButton.js';
-import Container from '../../elements/Modal/Container.js';
-import BtnContainer from '../../elements/Modal/BtnContainer.js';
+import CheckoutButton from '../../elements/Modal/CheckoutButton';
+import Container from '../../elements/Modal/Container';
+import BtnContainer from '../../elements/Modal/BtnContainer';
 
 function Checkout() {
   return (
@@ -11,7 +11,7 @@ function Checkout() {
         <CheckoutButton checkout>Checkout</CheckoutButton>
       </BtnContainer>
     </Container>
-  )
+  );
 }
 
-export default Checkout
+export default Checkout;

@@ -33705,11 +33705,11 @@ if ( true && typeof window !== 'undefined') {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _ItemInfo_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ItemInfo.jsx */ "./src/Components/ItemInfo.jsx");
-/* harmony import */ var _ItemCheckout_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ItemCheckout.jsx */ "./src/Components/ItemCheckout.jsx");
-/* harmony import */ var _Options_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Options.jsx */ "./src/Components/Options.jsx");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ItemInfo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ItemInfo */ "./src/Components/ItemInfo.jsx");
+/* harmony import */ var _ItemCheckout__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ItemCheckout */ "./src/Components/ItemCheckout.jsx");
+/* harmony import */ var _Options__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Options */ "./src/Components/Options.jsx");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -33751,10 +33751,9 @@ var App = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       currentItem: {},
-      carouselItems: [],
+      // carouselItems:[],
       optionChosenIndex: undefined
     };
-    _this.getProducts = _this.getProducts.bind(_assertThisInitialized(_this));
     _this.setRandomProduct = _this.setRandomProduct.bind(_assertThisInitialized(_this));
     _this.setCurrentItem = _this.setCurrentItem.bind(_assertThisInitialized(_this));
     _this.handleOptionClick = _this.handleOptionClick.bind(_assertThisInitialized(_this));
@@ -33767,29 +33766,19 @@ var App = /*#__PURE__*/function (_React$Component) {
       var _this2 = this;
 
       console.log('component did mount');
-      this.getProducts().then(function (response) {
+      App.getProducts().then(function (response) {
         return _this2.setRandomProduct(response.data);
-      }).then(function (currentItem) {
+      }).then(function () {
         return _this2.setOptionChosenIndex(0);
       })["catch"](function (err) {
         return console.log('Error getting random product', err);
       });
     }
   }, {
-    key: "getProducts",
-    value: function getProducts() {
-      return axios__WEBPACK_IMPORTED_MODULE_4___default.a.get('/product');
-    }
-  }, {
-    key: "getRandomIndex",
-    value: function getRandomIndex(min, max) {
-      return Math.floor(Math.random() * (max - min) + min);
-    }
-  }, {
     key: "setRandomProduct",
     value: function setRandomProduct(productsData) {
       console.log('inside set random product');
-      var index = this.getRandomIndex(0, productsData.length - 1);
+      var index = App.getRandomIndex(0, productsData.length - 1);
       return this.setCurrentItem(productsData[index]);
     }
   }, {
@@ -33806,7 +33795,6 @@ var App = /*#__PURE__*/function (_React$Component) {
       this.setState({
         optionChosenIndex: index
       });
-      return;
     }
   }, {
     key: "handleOptionClick",
@@ -33816,17 +33804,31 @@ var App = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ItemInfo_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], {
-        item: this.state.currentItem,
-        optionChosenIndex: this.state.optionChosenIndex
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ItemCheckout_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        item: this.state.currentItem,
-        optionChosenIndex: this.state.optionChosenIndex
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Options_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        options: this.state.currentItem.options,
-        optionChosenIndex: this.state.optionChosenIndex,
+      var _this$state = this.state,
+          currentItem = _this$state.currentItem,
+          optionChosenIndex = _this$state.optionChosenIndex;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ItemInfo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        item: currentItem,
+        optionChosenIndex: optionChosenIndex
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ItemCheckout__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        item: currentItem,
+        optionChosenIndex: optionChosenIndex
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Options__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        item: currentItem,
+        options: currentItem.options,
+        optionChosenIndex: optionChosenIndex,
         handleOptionClick: this.handleOptionClick
       }));
+    }
+  }], [{
+    key: "getProducts",
+    value: function getProducts() {
+      return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/product');
+    }
+  }, {
+    key: "getRandomIndex",
+    value: function getRandomIndex(min, max) {
+      return Math.floor(Math.random() * (max - min) + min);
     }
   }]);
 
@@ -33848,7 +33850,7 @@ var App = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Modal_Modal_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Modal/Modal.jsx */ "./src/Components/Modal/Modal.jsx");
+/* harmony import */ var _Modal_Modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Modal/Modal */ "./src/Components/Modal/Modal.jsx");
 
 
 
@@ -33873,7 +33875,7 @@ function ItemCheckout(props) {
     value: "9"
   }, "9"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "10"
-  }, "10")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Add To Basket"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Add To Loves"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Modal_Modal_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null));
+  }, "10")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Add To Basket"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", null, "Add To Loves"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Modal_Modal__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (ItemCheckout);
@@ -33891,21 +33893,25 @@ function ItemCheckout(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-
 
 
 function ItemInfo(props) {
   // console.log('props',props)
+  var _props$item = props.item,
+      brand = _props$item.brand,
+      itemName = _props$item.itemName,
+      reviews = _props$item.reviews,
+      hearts = _props$item.hearts,
+      options = _props$item.options,
+      optionChosenIndex = props.optionChosenIndex;
+
   if (props.optionChosenIndex !== undefined) {
     // console.log('should not be empty {}')
     console.log('should be the item', props.item.brand);
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.item.brand), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.item.itemName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, props.item.reviews), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, props.item.hearts)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, props.item.options[props.optionChosenIndex].price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "SPEND $50 FOR FREE SHIPPING")));
-  } else {
-    // console.log('inside else')
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Loading...")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "SPEND $50 FOR FREE SHIPPING")));
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, brand), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, itemName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, reviews), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, hearts)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, options[optionChosenIndex].price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "SPEND $50 FOR FREE SHIPPING")));
   }
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Loading...")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "SPEND $50 FOR FREE SHIPPING")));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (ItemInfo);
@@ -33944,16 +33950,16 @@ function Carousel() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _elements_Modal_CheckoutButton_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../elements/Modal/CheckoutButton.js */ "./src/elements/Modal/CheckoutButton.js");
-/* harmony import */ var _elements_Modal_Container_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../elements/Modal/Container.js */ "./src/elements/Modal/Container.js");
-/* harmony import */ var _elements_Modal_BtnContainer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../elements/Modal/BtnContainer.js */ "./src/elements/Modal/BtnContainer.js");
+/* harmony import */ var _elements_Modal_CheckoutButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../elements/Modal/CheckoutButton */ "./src/elements/Modal/CheckoutButton.js");
+/* harmony import */ var _elements_Modal_Container__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../elements/Modal/Container */ "./src/elements/Modal/Container.js");
+/* harmony import */ var _elements_Modal_BtnContainer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../elements/Modal/BtnContainer */ "./src/elements/Modal/BtnContainer.js");
 
 
 
 
 
 function Checkout() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Modal_Container_js__WEBPACK_IMPORTED_MODULE_2__["default"], null, "Basket Total (1 item): $47.00", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Modal_BtnContainer_js__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Modal_CheckoutButton_js__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Modal_Container__WEBPACK_IMPORTED_MODULE_2__["default"], null, "Basket Total (1 item): $47.00", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Modal_BtnContainer__WEBPACK_IMPORTED_MODULE_3__["default"], null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Modal_CheckoutButton__WEBPACK_IMPORTED_MODULE_1__["default"], {
     checkout: true
   }, "Checkout")));
 }
@@ -33994,16 +34000,16 @@ function ItemInfo() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _ItemInfo_jsx__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ItemInfo.jsx */ "./src/Components/Modal/ItemInfo.jsx");
-/* harmony import */ var _Checkout_jsx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Checkout.jsx */ "./src/Components/Modal/Checkout.jsx");
-/* harmony import */ var _Carousel_jsx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Carousel.jsx */ "./src/Components/Modal/Carousel.jsx");
+/* harmony import */ var _ItemInfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ItemInfo */ "./src/Components/Modal/ItemInfo.jsx");
+/* harmony import */ var _Checkout__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Checkout */ "./src/Components/Modal/Checkout.jsx");
+/* harmony import */ var _Carousel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Carousel */ "./src/Components/Modal/Carousel.jsx");
 
 
 
 
 
 function Modal() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ItemInfo_jsx__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Checkout_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Carousel_jsx__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ItemInfo__WEBPACK_IMPORTED_MODULE_1__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Checkout__WEBPACK_IMPORTED_MODULE_2__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Carousel__WEBPACK_IMPORTED_MODULE_3__["default"], null));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Modal);
@@ -34021,38 +34027,95 @@ function Modal() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 
-function Options(props) {
-  // console.log('props', props)
-  var handleClick = function handleClick(e) {
-    // console.log('should log the value chosen', e.target.value)
-    props.handleOptionClick(e.target.value);
-  };
 
-  var displayOptions;
-  var displayOptionChosen;
+var Options = /*#__PURE__*/function (_React$Component) {
+  _inherits(Options, _React$Component);
 
-  if (props.optionChosenIndex >= 0) {
-    // console.log('should display option chosen', props.options[props.optionChosenIndex].amount)
-    displayOptionChosen = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "SIZE: ", props.options[props.optionChosenIndex].amount);
-  } else {
-    displayOptionChosen = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Loading...");
+  var _super = _createSuper(Options);
+
+  function Options(props) {
+    var _this;
+
+    _classCallCheck(this, Options);
+
+    _this = _super.call(this, props);
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    return _this;
   }
 
-  if (props.options) {
-    displayOptions = props.options.map(function (option, index) {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-        value: index,
-        onClick: handleClick
-      }, option.label, " ", option.amount);
-    });
-  } else {
-    displayOptions = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading....");
-  }
+  _createClass(Options, [{
+    key: "handleClick",
+    value: function handleClick(e) {
+      var handleOptionClick = this.props.handleOptionClick;
+      handleOptionClick(e.target.value);
+    }
+  }, {
+    key: "displayOptionChosen",
+    value: function displayOptionChosen() {
+      var _this$props = this.props,
+          optionChosenIndex = _this$props.optionChosenIndex,
+          options = _this$props.options;
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, displayOptionChosen, displayOptions);
-}
+      if (optionChosenIndex >= 0) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "SIZE:", options[optionChosenIndex].amount);
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Loading...");
+    }
+  }, {
+    key: "displayOptions",
+    value: function displayOptions() {
+      var _this2 = this;
+
+      var _this$props2 = this.props,
+          options = _this$props2.options,
+          _id = _this$props2.item._id;
+
+      if (options) {
+        return options.map(function (option, index) {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+            type: "button",
+            value: index,
+            key: _id + option.label,
+            onClick: _this2.handleClick
+          }, option.label, ' ', option.amount);
+        });
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading....");
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.displayOptionChosen(), this.displayOptions());
+    }
+  }]);
+
+  return Options;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (Options);
 
@@ -34160,7 +34223,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-console.log('index has run');
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Components_App_jsx__WEBPACK_IMPORTED_MODULE_2__["default"], null), document.getElementById('app'));
 
 /***/ })

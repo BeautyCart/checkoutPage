@@ -1,7 +1,7 @@
 import React from 'react';
-import ItemInfo from './ItemInfo.jsx';
-import Checkout from './Checkout.jsx';
-import Carousel from './Carousel.jsx';
+import ItemInfo from './ItemInfo';
+import Checkout from './Checkout';
+import Carousel from './Carousel';
 
 function Modal() {
   return (
@@ -10,7 +10,7 @@ function Modal() {
       <Checkout />
       <Carousel />
     </div>
-  )
+  );
 }
 
-export default Modal
+export default Modal;

@@ -26,4 +26,4 @@ export default styled.button`
   outline: 0px;
   border-radius: 4px;
   transition: background-color 0.2s ease 0s;
-`
+`;
