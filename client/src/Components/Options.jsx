@@ -1,30 +1,51 @@
 import React from 'react';
 
-function Options(props) {
-  // console.log('props', props)
-  const handleClick = (e) => {
-    // console.log('should log the value chosen', e.target.value)
-    props.handleOptionClick(e.target.value)
+class Options extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
   }
-  let displayOptions;
-  let displayOptionChosen;
-  if (props.optionChosenIndex >= 0) {
-    // console.log('should display option chosen', props.options[props.optionChosenIndex].amount)
-    displayOptionChosen = <p>SIZE: {props.options[props.optionChosenIndex].amount}</p>
-  } else {
-    displayOptionChosen = <p>Loading...</p>
+
+  handleClick(e) {
+    const { handleOptionClick } = this.props;
+    handleOptionClick(e.target.value);
   }
-  if(props.options) {
-    displayOptions = props.options.map((option, index) => <button value={index} onClick={handleClick}>{option.label} {option.amount}</button>)
-  } else {
-    displayOptions = <div>Loading....</div>
+
+  displayOptionChosen() {
+    const { optionChosenIndex, options } = this.props;
+    if (optionChosenIndex >= 0) {
+      return (
+        <p>
+          SIZE:
+          {options[optionChosenIndex].amount}
+        </p>
+      );
+    }
+    return <p>Loading...</p>;
   }
-  return (
-    <div>
-      {displayOptionChosen}
-      {displayOptions}
-    </div>
-  )
+
+  displayOptions() {
+    const { options, item: { _id } } = this.props;
+    if (options) {
+      return options.map((option, index) => (
+        <button type="button" value={index} key={_id + option.label} onClick={this.handleClick}>
+          {option.label}
+          {' '}
+          {option.amount}
+        </button>
+      ));
+    }
+    return <div>Loading....</div>;
+  }
+
+  render() {
+    return (
+      <div>
+        {this.displayOptionChosen()}
+        {this.displayOptions()}
+      </div>
+    );
+  }
 }
 
 export default Options;
