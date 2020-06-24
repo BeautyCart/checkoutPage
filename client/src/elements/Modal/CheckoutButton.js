@@ -17,8 +17,8 @@ export default styled.button`
   font-weight: 700;
   box-sizing: border-box;
   -webkit-appearance: none;
-  color: rgb(255, 255, 255);
-  background-color: rgb(236, 4, 15);
+  color: ${(props) => (props.hasOwnProperty('checkout') ? 'rgb(255, 255, 255)' : 'black')};
+  background-color: ${(props) => (props.hasOwnProperty('checkout') ? 'rgb(236, 4, 15)' : 'white')};
   width: 100%;
   display: flex;
   border: none;

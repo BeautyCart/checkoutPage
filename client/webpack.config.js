@@ -8,38 +8,18 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-react", "@babel/preset-env"]
-          }
-        }
-      }
-    ]
+            presets: ['@babel/preset-react', '@babel/preset-env'],
+          },
+        },
+      },
+    ],
   },
+  mode: 'development',
+  devtool: 'source-map',
   output: {
-    path: __dirname + '/dist',
-    filename: 'bundle.js'
-  }
-
-
-  // entry: '/Users/jenniferxiong/HRSF128/checkoutPage/client/src/index.jsx',
-  // module: {
-  //   rules: [
-  //     {
-  //       test: /\.(js|jsx)$/,
-  //       exclude: /node_modules/,
-  //       use: {
-  //         loader: "babel-loader",
-  //         options: {
-  //           presets: ["@babel/preset-react", "@babel/preset-env"]
-  //         }
-  //       }
-  //     }
-  //   ]
-  // },
-  // mode: 'development',          
-  // output: {
-  //   filename: 'bundle.js',
-  //   path: __dirname + '/dist'
-  // }
-}
+    path: path.join(__dirname, '/dist'),
+    filename: 'bundle.js',
+  },
+};
