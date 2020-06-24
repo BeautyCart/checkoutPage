@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from './Modal/Modal.jsx'
 
 function ItemCheckout(props) {
   return (
@@ -16,7 +17,8 @@ function ItemCheckout(props) {
         <option value='10'>10</option>
       </select>
       <button>Add To Basket</button>
-      <button>Add To Loves</button>     
+      <button>Add To Loves</button> 
+      <Modal />    
     </div>
   )
 }
