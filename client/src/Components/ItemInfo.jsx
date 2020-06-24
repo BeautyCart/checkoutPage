@@ -8,7 +8,7 @@ function ItemInfo(props) {
     }, optionChosenIndex,
   } = props;
 
-  if (props.optionChosenIndex !== undefined) {
+  if (optionChosenIndex !== undefined) {
     // console.log('should not be empty {}')
     console.log('should be the item', props.item.brand);
     return (

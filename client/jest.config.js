@@ -1,7 +1,11 @@
 module.exports = {
-  setupFiles: ['<rootDir>/tests/setupTests.js']
-};  
-// displayName: 'omponents',
+  setupFiles: ['<rootDir>/__tests__/setupTests.js'],
+  transform: {
+    '^.+\\.jsx?$': 'babel-jest',
+  },
+  testMatch: ['**/__tests__/**/*.test.jsx'],
+};
+// displayName: 'Components',
 // testEnvironment: 'jsdom',
 // testMatch: ['**/test/**/*.test.js'],
 // setupFilesAfterEnv: ['<rootDir>/tests/setupTests.js'],

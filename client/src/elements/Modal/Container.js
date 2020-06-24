@@ -8,4 +8,4 @@ export default styled.div`
   display: block;
   min-width: 0px;
   width: 289px;
-`
+`;

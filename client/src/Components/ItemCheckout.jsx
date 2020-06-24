@@ -1,7 +1,8 @@
 import React from 'react';
-import Modal from './Modal/Modal';
+import Modal from './Modal';
 
 function ItemCheckout(props) {
+  const { item, optionChosen } = props;
   return (
     <div>
       <select>
@@ -16,11 +17,11 @@ function ItemCheckout(props) {
         <option value="9">9</option>
         <option value="10">10</option>
       </select>
-      <button>Add To Basket</button>
-      <button>Add To Loves</button> 
-      <Modal />
+      <button type="button">Add To Basket</button>
+      <button type="button">Add To Loves</button>
+      <Modal item={item} optionChosen={optionChosen} />
     </div>
-  )
+  );
 }
 
 export default ItemCheckout;

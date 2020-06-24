@@ -17,8 +17,8 @@ export default styled.button`
   font-weight: 700;
   box-sizing: border-box;
   -webkit-appearance: none;
-  color: ${(props) => (props.hasOwnProperty('checkout') ? 'rgb(255, 255, 255)' : 'black')};
-  background-color: ${(props) => (props.hasOwnProperty('checkout') ? 'rgb(236, 4, 15)' : 'white')};
+  color: ${(props) => (Object.prototype.hasOwnProperty.call(props, 'checkout') ? 'rgb(255, 255, 255)' : 'black')};
+  background-color: ${(props) => (Object.prototype.hasOwnProperty.call(props, 'checkout') ? 'rgb(236, 4, 15)' : 'white')};
   width: 100%;
   display: flex;
   border: none;
