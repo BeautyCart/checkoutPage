@@ -91,6 +91,7 @@ class ItemCheckout extends React.Component {
             item={item}
             optionChosenIndex={optionChosenIndex}
             closeModal={this.closeModal}
+            openModal={this.openModal}
           />
         )
           : null}
