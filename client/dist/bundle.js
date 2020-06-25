@@ -34204,7 +34204,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n  border-color: #ccc;\n  border-style: solid;\n  padding: 8px 12px;\n  background-color: transparent;\n  border-radius: 4px;\n  border-width: 1px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  font-size: 12px;\n  border-color: #ccc;\n  border-style: solid;\n  padding: 8px 12px;\n  background-color: transparent;\n  border-radius: 4px;\n  border-width: 1px;\n"]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -34214,7 +34214,7 @@ function _templateObject6() {
 }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n\n"]);
+  var data = _taggedTemplateLiteral(["\n  line-height: 1.5;\n  margin-top: ", ";\n  margin-bottom: 4px;\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -34224,7 +34224,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n  margin-top: ", ";\n  margin-bottom: 4px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 612px;\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -34234,7 +34234,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  width: 612px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 612px;\n  height: 138px;\n  font-family: Arial, Helvetica, sans-serif;\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -34244,7 +34244,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  width: 612px;\n  height: 138px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 612px;\n  height: 35px;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -34254,7 +34254,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  width: 612px;\n  height: 35px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  font-family: Arial, Helvetica, sans-serif;\n  font-size: 14px;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -34267,13 +34267,13 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var OptionChosenDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
-var OptionsDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2());
-var OptionDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject3());
-var OptionLabelDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject4(), function (props) {
+var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
+var OptionChosenDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2());
+var OptionsDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject3());
+var OptionDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject4());
+var OptionLabelDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject5(), function (props) {
   return props.value > 0 ? '12px' : '0px';
 });
-var ButtonDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject5());
 var Button = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].button(_templateObject6());
 
 var Options = /*#__PURE__*/function (_React$Component) {
@@ -34337,7 +34337,7 @@ var Options = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(OptionChosenDiv, null, this.displayOptionChosen()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(OptionsDiv, null, this.displayOptions()));
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(OptionChosenDiv, null, this.displayOptionChosen()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(OptionsDiv, null, this.displayOptions()));
     }
   }]);
 

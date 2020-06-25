@@ -1,6 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const Container = styled.div`
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+`;
+
 const OptionChosenDiv = styled.div`
   width: 612px;
   height: 35px;
@@ -9,6 +14,7 @@ const OptionChosenDiv = styled.div`
 const OptionsDiv = styled.div`
   width: 612px;
   height: 138px;
+  font-family: Arial, Helvetica, sans-serif;
 `;
 
 const OptionDiv = styled.div`
@@ -16,15 +22,13 @@ const OptionDiv = styled.div`
 `;
 
 const OptionLabelDiv = styled.div`
+  line-height: 1.5;
   margin-top: ${(props) => (props.value > 0 ? '12px' : '0px')};
   margin-bottom: 4px;
 `;
 
-const ButtonDiv = styled.div`
-
-`;
-
 const Button = styled.button`
+  font-size: 12px;
   border-color: #ccc;
   border-style: solid;
   padding: 8px 12px;
@@ -74,14 +78,14 @@ class Options extends React.Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <OptionChosenDiv>
           {this.displayOptionChosen()}
         </OptionChosenDiv>
         <OptionsDiv>
           {this.displayOptions()}
         </OptionsDiv>
-      </div>
+      </Container>
     );
   }
 }
