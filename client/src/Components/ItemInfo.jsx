@@ -46,7 +46,6 @@ const ReviewsAndHeartsDiv = styled.div`
 `;
 
 function ItemInfo(props) {
-  // console.log('props',props)
   const {
     item: {
       brand, itemName, reviews, hearts, options,
@@ -77,18 +76,25 @@ function ItemInfo(props) {
     );
   }
   return (
-    <div>
-      <span>
-        <div>Loading...</div>
-        <div>Loading...</div>
-        <span>Loading...</span>
-        <span>Loading...</span>
-      </span>
-      <span>
-        <div>Loading...</div>
+    <Container>
+      <ProductInfoDiv>
+        <BrandDiv>Loading...</BrandDiv>
+        <ItemNameDiv>Loading...</ItemNameDiv>
+        <ReviewsAndHeartsDiv>
+          Loading...
+          {' '}
+          5k reviews |
+          {' '}
+          Loading...
+        </ReviewsAndHeartsDiv>
+      </ProductInfoDiv>
+      <ProductPriceDiv>
+        <PriceDiv>
+          $Loading...
+        </PriceDiv>
         <div>SPEND $50 FOR FREE SHIPPING</div>
-      </span>
-    </div>
+      </ProductPriceDiv>
+    </Container>
   );
 }
 

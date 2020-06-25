@@ -34120,7 +34120,6 @@ var ItemNameDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(
 var ReviewsAndHeartsDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject7());
 
 function ItemInfo(props) {
-  // console.log('props',props)
   var _props$item = props.item,
       brand = _props$item.brand,
       itemName = _props$item.itemName,
@@ -34133,7 +34132,7 @@ function ItemInfo(props) {
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProductInfoDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BrandDiv, null, brand), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ItemNameDiv, null, itemName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ReviewsAndHeartsDiv, null, reviews, ' ', "5k reviews |", ' ', hearts)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProductPriceDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PriceDiv, null, options[optionChosenIndex].price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "SPEND $50 FOR FREE SHIPPING")));
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "Loading...")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "SPEND $50 FOR FREE SHIPPING")));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProductInfoDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BrandDiv, null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ItemNameDiv, null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ReviewsAndHeartsDiv, null, "Loading...", ' ', "5k reviews |", ' ', "Loading...")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProductPriceDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PriceDiv, null, "$Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "SPEND $50 FOR FREE SHIPPING")));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (ItemInfo);
