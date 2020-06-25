@@ -35,6 +35,7 @@ const Button = styled.button`
   background-color: transparent;
   border-radius: 4px;
   border-width: 1px;
+  cursor: pointer;
 `;
 
 class Options extends React.Component {
