@@ -1,6 +1,6 @@
 import React from 'react';
-import CheckoutButton from '../../elements/Modal/CheckoutButton';
-import Container from '../../elements/Modal/Container';
+import styled from 'styled-components';
+import CheckoutButton from '../../elements/Button';
 import BtnContainer from '../../elements/Modal/BtnContainer';
 
 function Checkout() {
@@ -8,7 +8,7 @@ function Checkout() {
     <Container>
       Basket Total (1 item): $47.00
       <BtnContainer>
-        <CheckoutButton checkout>Checkout</CheckoutButton>
+        <CheckoutButton redBtn>Checkout</CheckoutButton>
       </BtnContainer>
     </Container>
   );

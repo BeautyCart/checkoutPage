@@ -1,8 +1,22 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import ItemInfo from './ItemInfo';
 import ItemCheckout from './ItemCheckout';
 import Options from './Options';
+
+const ProductAndCheckoutDiv = styled.div`
+  width: 624px;
+  height: 140px;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: flex-start;
+`;
+
+const OptionsDiv = styled.div`
+  width: 612px;
+  height: 138px;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +32,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    console.log('component did mount');
     App.getProducts()
       .then((response) => this.setRandomProduct(response.data))
       .then(() => this.setOptionChosenIndex(0))
@@ -60,17 +73,21 @@ class App extends React.Component {
     const { currentItem, optionChosenIndex } = this.state;
     return (
       <div>
-        <ItemInfo item={currentItem} optionChosenIndex={optionChosenIndex} />
-        <ItemCheckout
-          item={currentItem}
-          optionChosenIndex={optionChosenIndex}
-        />
-        <Options
-          item={currentItem}
-          options={currentItem.options}
-          optionChosenIndex={optionChosenIndex}
-          handleOptionClick={this.handleOptionClick}
-        />
+        <ProductAndCheckoutDiv>
+          <ItemInfo item={currentItem} optionChosenIndex={optionChosenIndex} />
+          <ItemCheckout
+            item={currentItem}
+            optionChosenIndex={optionChosenIndex}
+          />
+        </ProductAndCheckoutDiv>
+        <OptionsDiv>
+          <Options
+            item={currentItem}
+            options={currentItem.options}
+            optionChosenIndex={optionChosenIndex}
+            handleOptionClick={this.handleOptionClick}
+          />
+        </OptionsDiv>
       </div>
     );
   }
