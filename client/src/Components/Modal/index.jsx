@@ -22,6 +22,12 @@ const ModalDiv = styled.div`
   background-color: white;
 `;
 
+const MainDiv = styled.div`
+  height: 586px;
+  width: 551px;
+  padding: 32px;
+`;
+
 class Modal extends React.Component {
   constructor(props) {
     super(props);
@@ -34,14 +40,16 @@ class Modal extends React.Component {
   }
 
   render() {
-    const { item, optionChosen } = this.props;
+    const { item, optionChosenIndex } = this.props;
     return (
       <GreyBackgroundDiv onClick={this.handleClick}>
         <ModalDiv>
           <Header item={item} />
-          <ItemInfo item={item} optionChosen={optionChosen} />
-          <Checkout />
-          <Carousel />
+          <MainDiv>
+            <ItemInfo item={item} optionChosenIndex={optionChosenIndex} />
+            <Checkout />
+            <Carousel />
+          </MainDiv>
         </ModalDiv>
       </GreyBackgroundDiv>
     );

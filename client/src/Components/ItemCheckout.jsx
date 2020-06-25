@@ -62,7 +62,7 @@ class ItemCheckout extends React.Component {
   }
 
   render() {
-    const { item, optionChosen } = this.props;
+    const { item, optionChosenIndex } = this.props;
     const { showModal } = this.state;
     return (
       <Container>
@@ -89,7 +89,7 @@ class ItemCheckout extends React.Component {
         {showModal ? (
           <Modal
             item={item}
-            optionChosen={optionChosen}
+            optionChosenIndex={optionChosenIndex}
             closeModal={this.closeModal}
           />
         )
