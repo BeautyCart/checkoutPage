@@ -1,6 +1,6 @@
 import React from 'react';
+import styled from 'styled-components';
 import CheckoutButton from '../../elements/Modal/CheckoutButton';
-import Container from '../../elements/Modal/Container';
 import BtnContainer from '../../elements/Modal/BtnContainer';
 
 function Checkout() {
