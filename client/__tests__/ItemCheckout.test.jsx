@@ -1,12 +1,12 @@
 import React from 'react';
 import { expect } from 'chai';
 import { shallow } from 'enzyme';
-import ItemInfo from '../src/Components/ItemInfo';
+import ItemCheckout from '../src/Components/ItemCheckout';
 
-describe('<ItemInfo />', () => {
-  it('renders static div correctly', () => {
+describe('<ItemCheckout />', () => {
+  it('has 10 option tags', () => {
     const wrapper = shallow(
-      <ItemInfo
+      <ItemCheckout
         item={{
           brand: 'Impedit',
           itemName: 'Adipisci Cream',
@@ -17,6 +17,6 @@ describe('<ItemInfo />', () => {
         optionChosenIndex={0}
       />,
     );
-    expect(wrapper.find('div').text()).contain('SPEND $50 FOR FREE SHIPPING');
+    expect(wrapper.find('option')).to.have.lengthOf(10);
   });
 });
