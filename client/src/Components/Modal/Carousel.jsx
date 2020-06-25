@@ -32,6 +32,7 @@ class Carousel extends React.Component {
     };
     this.setRelatedProducts = this.setRelatedProducts.bind(this);
     this.getProducts = this.getProducts.bind(this);
+    this.setPage = this.setPage.bind(this);
   }
 
   componentDidMount() {
@@ -42,6 +43,12 @@ class Carousel extends React.Component {
     console.log(products);
     this.setState({
       relatedProducts: products,
+    });
+  }
+
+  setPage(newPage) {
+    this.setState({
+      page: newPage,
     });
   }
 
@@ -57,7 +64,7 @@ class Carousel extends React.Component {
     return (
       <Container>
         <HeaderDiv>We Think You'll Also Love</HeaderDiv>
-        <RelatedProduct relatedProducts={relatedProducts} page={page} />
+        <RelatedProduct relatedProducts={relatedProducts} page={page} setPage={this.setPage} />
         <Page />
       </Container>
     );
