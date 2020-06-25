@@ -9,16 +9,8 @@ class Carousel extends React.Component {
       page: 0,
       relatedProducts: [],
     };
-    this.getProducts = this.getProducts.bind(this);
-    this.getRelatedProducts = this.getRelatedProducts.bind(this);
     this.setRelatedProducts = this.setRelatedProducts.bind(this);
-  }
-
-  static getProductType(product) {
-    let currentProductType = product.itemName.split(' ');
-    currentProductType = currentProductType.slice(1);
-    currentProductType = currentProductType.join(' ');
-    return currentProductType;
+    this.getProducts = this.getProducts.bind(this);
   }
 
   setRelatedProducts(products) {
@@ -27,30 +19,10 @@ class Carousel extends React.Component {
     });
   }
 
-  static get12RelatedProducts(products) {
-    const relatedProducts = [];
-    for (let i = 0; i < products.length; i++) {
-      relatedProducts.push(products[i]);
-    }
-    return relatedProducts;
-  }
-
-  getRelatedProducts(products) {
-    let relatedProducts = [];
-    const { typeOfProduct } = this.props;
-    for (let i = 0; i < products.length; i++) {
-      const currentProductType = Carousel.getProductType(products[i]);
-      if (typeOfProduct === currentProductType) {
-        relatedProducts.push(products[i]);
-      }
-    }
-    relatedProducts = Carousel.get12RelatedProducts(relatedProducts);
-    this.setRelatedProducts(relatedProducts);
-  }
-
   getProducts() {
-    axios.get('/product')
-      .then((results) => this.getRelatedProducts(results.data))
+    const { typeOfProduct } = this.props;
+    axios.get(`/relatedProducts/${typeOfProduct}`)
+      .then((results) => this.setRelatedProducts(results.data))
       .catch((err) => console.log(err));
   }
 

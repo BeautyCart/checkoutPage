@@ -34223,9 +34223,8 @@ var Carousel = /*#__PURE__*/function (_React$Component) {
       page: 0,
       relatedProducts: []
     };
-    _this.getProducts = _this.getProducts.bind(_assertThisInitialized(_this));
-    _this.getRelatedProducts = _this.getRelatedProducts.bind(_assertThisInitialized(_this));
     _this.setRelatedProducts = _this.setRelatedProducts.bind(_assertThisInitialized(_this));
+    _this.getProducts = _this.getProducts.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -34237,29 +34236,13 @@ var Carousel = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "getRelatedProducts",
-    value: function getRelatedProducts(products) {
-      var relatedProducts = [];
-      var typeOfProduct = this.props.typeOfProduct;
-
-      for (var i = 0; i < products.length; i++) {
-        var currentProductType = Carousel.getProductType(products[i]);
-
-        if (typeOfProduct === currentProductType) {
-          relatedProducts.push(products[i]);
-        }
-      }
-
-      relatedProducts = Carousel.get12RelatedProducts(relatedProducts);
-      this.setRelatedProducts(relatedProducts);
-    }
-  }, {
     key: "getProducts",
     value: function getProducts() {
       var _this2 = this;
 
-      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get('/product').then(function (results) {
-        return _this2.getRelatedProducts(results.data);
+      var typeOfProduct = this.props.typeOfProduct;
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("/relatedProducts/".concat(typeOfProduct)).then(function (results) {
+        return _this2.setRelatedProducts(results.data);
       })["catch"](function (err) {
         return console.log(err);
       });
@@ -34271,25 +34254,6 @@ var Carousel = /*#__PURE__*/function (_React$Component) {
         type: "button",
         onClick: this.getProducts
       }, "Button"));
-    }
-  }], [{
-    key: "getProductType",
-    value: function getProductType(product) {
-      var currentProductType = product.itemName.split(' ');
-      currentProductType = currentProductType.slice(1);
-      currentProductType = currentProductType.join(' ');
-      return currentProductType;
-    }
-  }, {
-    key: "get12RelatedProducts",
-    value: function get12RelatedProducts(products) {
-      var relatedProducts = [];
-
-      for (var i = 0; i < products.length; i++) {
-        relatedProducts.push(products[i]);
-      }
-
-      return relatedProducts;
     }
   }]);
 
