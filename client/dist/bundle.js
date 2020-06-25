@@ -34180,6 +34180,7 @@ function Modal() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34202,7 +34203,78 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _templateObject6() {
+  var data = _taggedTemplateLiteral(["\n  border-color: #ccc;\n  border-style: solid;\n  padding: 8px 12px;\n  background-color: transparent;\n  border-radius: 4px;\n  border-width: 1px;\n"]);
 
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5() {
+  var data = _taggedTemplateLiteral(["\n\n"]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4() {
+  var data = _taggedTemplateLiteral(["\n  margin-top: ", ";\n  margin-bottom: 4px;\n"]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject3() {
+  var data = _taggedTemplateLiteral(["\n  width: 612px;\n"]);
+
+  _templateObject3 = function _templateObject3() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n  width: 612px;\n  height: 138px;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  width: 612px;\n  height: 35px;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+var OptionChosenDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
+var OptionsDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2());
+var OptionDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject3());
+var OptionLabelDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject4(), function (props) {
+  return props.value > 0 ? '12px' : '0px';
+});
+var ButtonDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject5());
+var Button = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].button(_templateObject6());
 
 var Options = /*#__PURE__*/function (_React$Component) {
   _inherits(Options, _React$Component);
@@ -34249,12 +34321,14 @@ var Options = /*#__PURE__*/function (_React$Component) {
 
       if (options) {
         return options.map(function (option, index) {
-          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+          return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(OptionDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(OptionLabelDiv, {
+            value: index
+          }, option.label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Button, {
             type: "button",
             value: index,
             key: _id + option.label,
             onClick: _this2.handleClick
-          }, option.label, ' ', option.amount);
+          }, option.amount));
         });
       }
 
@@ -34263,7 +34337,7 @@ var Options = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, this.displayOptionChosen(), this.displayOptions());
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(OptionChosenDiv, null, this.displayOptionChosen()), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(OptionsDiv, null, this.displayOptions()));
     }
   }]);
 
