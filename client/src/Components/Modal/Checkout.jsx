@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import CheckoutButton from '../../elements/Button';
+import Button from '../../elements/Button';
 
 const Container = styled.div`
   font-family: Arial, Helvetica, sans-serif;
   width: 257px;
   height: 120px;
-  padding-left: 16px;
-  padding-right: 16px;
+  padding-left: 15px;
 `;
 
 const BasketTotalDiv = styled.div`
@@ -18,10 +17,11 @@ const BasketTotalDiv = styled.div`
 `;
 
 const ButtonsDiv = styled.div`
+  width: 255px;
+  height: 88px;
   display: flex;
-  margin-left: -8px;
-  margin-right: -8px;
-  flex-flow: row wrap;
+  justify-content: space-between;
+  flex-direction: column;
 `;
 
 function Checkout() {
@@ -31,8 +31,8 @@ function Checkout() {
         Basket Total (1 item): $47.00
       </BasketTotalDiv>
       <ButtonsDiv>
-        <CheckoutButton redBtn>Checkout</CheckoutButton>
-        <CheckoutButton>Continue Shopping</CheckoutButton>
+        <Button redBtn>Checkout</Button>
+        <Button>Continue Shopping</Button>
       </ButtonsDiv>
     </Container>
   );

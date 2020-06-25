@@ -10,6 +10,7 @@ export default styled.button`
   border: ${(props) => (Object.prototype.hasOwnProperty.call(props, 'redBtn') ? '1px solid transparent' : '1px solid black')};
   font-weight: 700;
   min-height: 40px;
+  max-height:40px;
   border-radius: 4px;
   transition: background-color 0.2s ease 0s;
 `;

@@ -15,17 +15,34 @@ const GreyBackgroundDiv = styled.div`
 `;
 
 const ModalDiv = styled.div`
-  height: 650px;
-  width: 668px;
+  width: 650px;
+  height: 668px;
   margin: auto;
   margin-top: 62px;
   background-color: white;
 `;
 
 const MainDiv = styled.div`
-  height: 586px;
-  width: 551px;
+  height: 551px;
+  width: 586px;
   padding: 32px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const TopDiv = styled.div`
+  width: 618px;
+  height: 120px;
+  display:flex;
+  justify-content: flex-start;
+`;
+
+const MiddleDiv = styled.div`
+  width: 586px;
+  height: 35px;
+  padding-top: 18px;
+  border-top: .25px solid #E8E8E8;
+  margin-top: 30px;
 `;
 
 class Modal extends React.Component {
@@ -46,8 +63,11 @@ class Modal extends React.Component {
         <ModalDiv>
           <Header item={item} />
           <MainDiv>
-            <ItemInfo item={item} optionChosenIndex={optionChosenIndex} />
-            <Checkout />
+            <TopDiv>
+              <ItemInfo item={item} optionChosenIndex={optionChosenIndex} />
+              <Checkout />
+            </TopDiv>
+            <MiddleDiv />
             <Carousel />
           </MainDiv>
         </ModalDiv>

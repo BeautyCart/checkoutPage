@@ -11,7 +11,7 @@ const Container = styled.div`
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight:700;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 0.25px solid #E8E8E8;
   display: flex;
   justify-content: flex-start;
 `;

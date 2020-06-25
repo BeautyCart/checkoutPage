@@ -34202,7 +34202,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _elements_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../elements/Button */ "./src/elements/Button.js");
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  display: flex;\n  margin-left: -8px;\n  margin-right: -8px;\n  flex-flow: row wrap;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 255px;\n  height: 88px;\n  display: flex;\n  justify-content: space-between;\n  flex-direction: column;\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -34222,7 +34222,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  font-family: Arial, Helvetica, sans-serif;\n  width: 257px;\n  height: 120px;\n  padding-left: 16px;\n  padding-right: 16px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  font-family: Arial, Helvetica, sans-serif;\n  width: 257px;\n  height: 120px;\n  padding-left: 15px;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -34273,7 +34273,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  width: 568px;\n  height: 20px;\n  padding-top: 16px;\n  padding-bottom: 16px;\n  padding-left: 32px;\n  padding-right: 50px;\n  font-size: 16px;\n  font-family: Arial, Helvetica, sans-serif;\n  font-weight:700;\n  border-bottom: 1px solid #ccc;\n  display: flex;\n  justify-content: flex-start;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 568px;\n  height: 20px;\n  padding-top: 16px;\n  padding-bottom: 16px;\n  padding-left: 32px;\n  padding-right: 50px;\n  font-size: 16px;\n  font-family: Arial, Helvetica, sans-serif;\n  font-weight:700;\n  border-bottom: 0.25px solid #E8E8E8;\n  display: flex;\n  justify-content: flex-start;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -34383,7 +34383,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  width: 297px;\n  height: 120px;\n  padding-left: 16px;\n  padding-right: 16px;\n  display: flex;\n  justify-content: flex-start;\n  font-family: Arial, Helvetica, sans-serif;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 297px;\n  height: 120px;\n  padding-right: 16px;\n  display: flex;\n  justify-content: flex-start;\n  font-family: Arial, Helvetica, sans-serif;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -34459,8 +34459,28 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _templateObject5() {
+  var data = _taggedTemplateLiteral(["\n  width: 586px;\n  height: 35px;\n  padding-top: 18px;\n  border-top: .25px solid #E8E8E8;\n  margin-top: 30px;\n"]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4() {
+  var data = _taggedTemplateLiteral(["\n  width: 618px;\n  height: 120px;\n  display:flex;\n  justify-content: flex-start;\n"]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  height: 586px;\n  width: 551px;\n  padding: 32px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  height: 551px;\n  width: 586px;\n  padding: 32px;\n  display: flex;\n  justify-content: space-between;\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -34470,7 +34490,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  height: 650px;\n  width: 668px;\n  margin: auto;\n  margin-top: 62px;\n  background-color: white;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 650px;\n  height: 668px;\n  margin: auto;\n  margin-top: 62px;\n  background-color: white;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -34500,6 +34520,8 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var GreyBackgroundDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
 var ModalDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2());
 var MainDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject3());
+var TopDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject4());
+var MiddleDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject5());
 
 var Modal = /*#__PURE__*/function (_React$Component) {
   _inherits(Modal, _React$Component);
@@ -34532,10 +34554,10 @@ var Modal = /*#__PURE__*/function (_React$Component) {
         onClick: this.handleClick
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ModalDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
         item: item
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ItemInfo__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TopDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_ItemInfo__WEBPACK_IMPORTED_MODULE_3__["default"], {
         item: item,
         optionChosenIndex: optionChosenIndex
-      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Checkout__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Carousel__WEBPACK_IMPORTED_MODULE_5__["default"], null))));
+      }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Checkout__WEBPACK_IMPORTED_MODULE_4__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MiddleDiv, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Carousel__WEBPACK_IMPORTED_MODULE_5__["default"], null))));
     }
   }]);
 
@@ -34736,7 +34758,7 @@ var Options = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  font-size: 12px;\n  cursor: pointer;\n  text-transform: uppercase;\n  width: 100%;\n  color: ", ";\n  background-color: ", ";\n  border: ", ";\n  font-weight: 700;\n  min-height: 40px;\n  border-radius: 4px;\n  transition: background-color 0.2s ease 0s;\n"]);
+  var data = _taggedTemplateLiteral(["\n  font-size: 12px;\n  cursor: pointer;\n  text-transform: uppercase;\n  width: 100%;\n  color: ", ";\n  background-color: ", ";\n  border: ", ";\n  font-weight: 700;\n  min-height: 40px;\n  max-height:40px;\n  border-radius: 4px;\n  transition: background-color 0.2s ease 0s;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
