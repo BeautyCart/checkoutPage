@@ -11,18 +11,22 @@ const Container = styled.div`
 const Image = styled.img`
   width: 97px;
   height: 97px;
-  margin-left: 15px;
+`;
+
+const ImageDiv = styled.div`
   margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
 `;
 
 const BrandAndItemDiv = styled.div`
   width: 100%;
-  height: 45px;
+  height: 30px;
   display: flex;
   text-align: center;
   flex-direction: column;
   justify-content: flex-start;
-  ${this}:onHover {
+  ${this}:Hover {
     text-decoration: underline;
   }
 `;
@@ -32,11 +36,32 @@ const BrandDiv = styled.div`
   font-weight: 700;
 `;
 
+const PriceDiv = styled.div`
+  font-weight: 700;
+  margin-top: 4px;
+  display: float;
+  justify-content: center;
+`;
+
+const ReviewsDiv = styled.div`
+  width: 100%;
+  height: 12px;
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+`;
+
 function RelatedProduct(props) {
-  const { product: { image, brand, itemName } } = props;
+  const {
+    product: {
+      image, brand, itemName, options,
+    },
+  } = props;
   return (
     <Container>
-      <Image src={image} />
+      <ImageDiv>
+        <Image src={image} />
+      </ImageDiv>
       <BrandAndItemDiv>
         <BrandDiv>
           {brand}
@@ -45,6 +70,12 @@ function RelatedProduct(props) {
           {itemName}
         </div>
       </BrandAndItemDiv>
+      <PriceDiv>
+        {options[0].price}
+      </PriceDiv>
+      <ReviewsDiv>
+        Reviews goes here
+      </ReviewsDiv>
     </Container>
   );
 }

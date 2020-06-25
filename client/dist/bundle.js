@@ -34592,10 +34592,25 @@ function ItemInfo(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: center;\n"]);
 
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
 
 function Page(props) {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Hello Page");
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, "Hello Page");
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Page);
@@ -34614,8 +34629,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
-function _templateObject4() {
+function _templateObject7() {
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  height: 12px;\n  margin-top: 8px;\n  display: flex;\n  justify-content: center;\n"]);
+
+  _templateObject7 = function _templateObject7() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject6() {
+  var data = _taggedTemplateLiteral(["\n  font-weight: 700;\n  margin-top: 4px;\n  display: float;\n  justify-content: center;\n"]);
+
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject5() {
   var data = _taggedTemplateLiteral(["\n  text-transform: uppercase;\n  font-weight: 700;\n"]);
+
+  _templateObject5 = function _templateObject5() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject4() {
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  height: 30px;\n  display: flex;\n  text-align: center;\n  flex-direction: column;\n  justify-content: flex-start;\n  ", ":Hover {\n    text-decoration: underline;\n  }\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -34625,7 +34670,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  height: 45px;\n  display: flex;\n  text-align: center;\n  flex-direction: column;\n  justify-content: flex-start;\n  ", ":onHover {\n    text-decoration: underline;\n  }\n"]);
+  var data = _taggedTemplateLiteral(["\n  margin-bottom: 24px;\n  display: flex;\n  justify-content: center;\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -34635,7 +34680,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteral(["\n  width: 97px;\n  height: 97px;\n  margin-left: 15px;\n  margin-bottom: 24px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 97px;\n  height: 97px;\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -34660,17 +34705,21 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
 var Image = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].img(_templateObject2());
-var BrandAndItemDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject3(), undefined);
-var BrandDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject4());
+var ImageDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject3());
+var BrandAndItemDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject4(), undefined);
+var BrandDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject5());
+var PriceDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject6());
+var ReviewsDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject7());
 
 function RelatedProduct(props) {
   var _props$product = props.product,
       image = _props$product.image,
       brand = _props$product.brand,
-      itemName = _props$product.itemName;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Image, {
+      itemName = _props$product.itemName,
+      options = _props$product.options;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ImageDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Image, {
     src: image
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BrandAndItemDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BrandDiv, null, brand), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, itemName)));
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BrandAndItemDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BrandDiv, null, brand), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, itemName)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PriceDiv, null, options[0].price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ReviewsDiv, null, "Reviews goes here"));
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (RelatedProduct);
