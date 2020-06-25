@@ -1,4 +1,24 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const ProductInfoDiv = styled.div`
+  width: 254px;
+  height: 173px;
+  padding-left: 6px;
+  padding-right: 6px;
+`;
+
+const ProductPriceDiv = styled.div`
+  width: 112px;
+  height: 173px;
+  padding-left: 6px;
+  padding-right: 6px;
+`;
+
+const Container = styled.div`
+  display: flex;
+  justify-content: flex-start;
+`;
 
 function ItemInfo(props) {
   // console.log('props',props)
@@ -9,21 +29,19 @@ function ItemInfo(props) {
   } = props;
 
   if (optionChosenIndex !== undefined) {
-    // console.log('should not be empty {}')
-    console.log('should be the item', props.item.brand);
     return (
-      <div>
-        <span>
+      <Container>
+        <ProductInfoDiv>
           <div>{brand}</div>
           <div>{itemName}</div>
           <span>{reviews}</span>
           <span>{hearts}</span>
-        </span>
-        <span>
+        </ProductInfoDiv>
+        <ProductPriceDiv>
           <div>{options[optionChosenIndex].price}</div>
           <div>SPEND $50 FOR FREE SHIPPING</div>
-        </span>
-      </div>
+        </ProductPriceDiv>
+      </Container>
     );
   }
   return (
