@@ -37,14 +37,13 @@ class Checkout extends React.Component {
 
   render() {
     const { price, quantity } = this.props;
-    console.log('price type', typeof price, 'quantity', typeof quantity);
     return (
       <Container>
         <BasketTotalDiv>
           Basket Total (
           {quantity}
           {' '}
-          {({ quantity } > 0) ? 'items' : 'item'}
+          {(quantity !== '1') ? 'items' : 'item'}
           :
           {' '}
           {Checkout.parsePrice(price, quantity)}

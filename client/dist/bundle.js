@@ -33994,7 +33994,7 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "handleSelect",
     value: function handleSelect(e) {
-      this.setQuantity(e.target.value);
+      this.setQuantity(Number(e.target.value));
     }
   }, {
     key: "openModal",
@@ -34023,35 +34023,35 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
         value: quantity,
         onChange: this.handleSelect
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        key: "1",
-        value: "1"
+        key: 1,
+        value: 1
       }, "1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        key: "2",
-        value: "2"
+        key: 2,
+        value: 2
       }, "2"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        key: "3",
-        value: "3"
+        key: 3,
+        value: 3
       }, "3"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        key: "4",
-        value: "4"
+        key: 4,
+        value: 4
       }, "4"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        key: "5",
-        value: "5"
+        key: 5,
+        value: 5
       }, "5"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        key: "6",
-        value: "6"
+        key: 6,
+        value: 6
       }, "6"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        key: "7",
-        value: "7"
+        key: 7,
+        value: 7
       }, "7"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        key: "8",
-        value: "8"
+        key: 8,
+        value: 8
       }, "8"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        key: "9",
-        value: "9"
+        key: 9,
+        value: 9
       }, "9"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-        key: "10",
-        value: "10"
+        key: 10,
+        value: 10
       }, "10"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AddToBasketOrLovesDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ButtonsDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
         redBtn: true,
         onClick: this.openModal,
@@ -34422,10 +34422,7 @@ var Checkout = /*#__PURE__*/function (_React$Component) {
       var _this$props = this.props,
           price = _this$props.price,
           quantity = _this$props.quantity;
-      console.log('price type', _typeof(price), 'quantity', _typeof(quantity));
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BasketTotalDiv, null, "Basket Total (", quantity, ' ', {
-        quantity: quantity
-      } > 0 ? 'items' : 'item', ":", ' ', Checkout.parsePrice(price, quantity), ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ButtonsDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BasketTotalDiv, null, "Basket Total (", quantity, ' ', quantity !== '1' ? 'items' : 'item', ":", ' ', Checkout.parsePrice(price, quantity), ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ButtonsDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
         redBtn: true
       }, "Checkout"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_2__["default"], null, "Continue Shopping")));
     }
