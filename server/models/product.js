@@ -1,15 +1,17 @@
-const db = require('../database/index.js')
-const Schema = db.Schema;
+const db = require('../database/index.js');
+
+const { Schema } = db;
 
 const productSchema = new Schema({
-  image: String, 
+  image: String,
   brand: String,
   itemName: String,
   reviews: Number,
+  reviewAmount: Number,
   hearts: Number,
-  options: Array
-}, {autoCreate: true})
+  options: Array,
+}, { autoCreate: true });
 
-const Product = db.model('Product', productSchema)
+const Product = db.model('Product', productSchema);
 
-module.exports = Product
+module.exports = Product;

@@ -24,18 +24,39 @@ const ButtonsDiv = styled.div`
   flex-direction: column;
 `;
 
-function Checkout() {
-  return (
-    <Container>
-      <BasketTotalDiv>
-        Basket Total (1 item): $47.00
-      </BasketTotalDiv>
-      <ButtonsDiv>
-        <Button redBtn>Checkout</Button>
-        <Button>Continue Shopping</Button>
-      </ButtonsDiv>
-    </Container>
-  );
+class Checkout extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  static parsePrice(price, quantity) {
+    price = price.slice(1);
+    price = `$${parseFloat(price) * quantity}.00`;
+    return price;
+  }
+
+  render() {
+    const { price, quantity } = this.props;
+    console.log('price type', typeof price, 'quantity', typeof quantity);
+    return (
+      <Container>
+        <BasketTotalDiv>
+          Basket Total (
+          {quantity}
+          {' '}
+          {({ quantity } > 0) ? 'items' : 'item'}
+          :
+          {' '}
+          {Checkout.parsePrice(price, quantity)}
+          )
+        </BasketTotalDiv>
+        <ButtonsDiv>
+          <Button redBtn>Checkout</Button>
+          <Button>Continue Shopping</Button>
+        </ButtonsDiv>
+      </Container>
+    );
+  }
 }
 
 export default Checkout;

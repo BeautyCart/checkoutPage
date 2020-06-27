@@ -42,22 +42,26 @@ const TrackContainer = styled.div`
   width: 534px;
   height: 220px;
   overflow: hidden;
+  position: relative;
+`;
+
+const RelatedProductsContainer = styled.div`
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  transform: ${(props) => `translateX(${-534 * props.page}px)`};
+  transition-duration: .3s;
 `;
 
 class RelatedProducts extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      hi: '', // TODO
-    };
     this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(e) {
     const { page, setPage } = this.props;
-    console.log('event.target', e.target.id);
     if (e.target.id === 'right' && page !== 2) {
-      console.log('Incremented Page', page + 1);
       setPage(page + 1);
     }
     if (e.target.id === 'left' && page !== 0) {
@@ -77,16 +81,18 @@ class RelatedProducts extends React.Component {
           </SvgLeft>
         </ArrowButton>
         <TrackContainer>
-          {relatedProducts.map(
-            (relatedProduct, index) => (
-              <RelatedProduct
-                key={relatedProduct._id}
-                page={page}
-                product={relatedProduct}
-                id={index}
-              />
-            ),
-          )}
+          <RelatedProductsContainer page={page}>
+            {relatedProducts.map(
+              (relatedProduct, index) => (
+                <RelatedProduct
+                  key={relatedProduct._id}
+                  page={page}
+                  product={relatedProduct}
+                  id={index}
+                />
+              ),
+            )}
+          </RelatedProductsContainer>
         </TrackContainer>
         <ArrowButton onClick={this.handleClick} type="button">
           <SvgRight id="right" viewBox="0 0 16 32">

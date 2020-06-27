@@ -55,6 +55,7 @@ class Options extends React.Component {
       return (
         <p>
           SIZE:
+          {' '}
           {options[optionChosenIndex].amount}
         </p>
       );

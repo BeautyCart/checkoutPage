@@ -5,7 +5,7 @@ const Container = styled.div`
   width: 568px;
   height: 20px;
   padding-top: 16px;
-  padding-bottom: 16px;
+  padding-bottom: 15px;
   padding-left: 32px;
   padding-right: 50px;
   font-size: 16px;
