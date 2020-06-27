@@ -64,7 +64,7 @@ class Modal extends React.Component {
   }
 
   render() {
-    const { item, optionChosenIndex } = this.props;
+    const { item, optionChosenIndex, quantity } = this.props;
     let typeOfProduct = item.itemName.split(' ');
     typeOfProduct = typeOfProduct.slice(1);
     typeOfProduct = typeOfProduct.join(' ');
@@ -75,7 +75,7 @@ class Modal extends React.Component {
           <MainDiv>
             <TopDiv>
               <ItemInfo item={item} optionChosenIndex={optionChosenIndex} />
-              <Checkout price={item.options[optionChosenIndex].price} quantity={2} />
+              <Checkout price={item.options[optionChosenIndex].price} quantity={quantity} />
             </TopDiv>
             <MiddleDiv>
               <SeeSample />

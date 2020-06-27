@@ -35170,7 +35170,8 @@ var Modal = /*#__PURE__*/function (_React$Component) {
     value: function render() {
       var _this$props = this.props,
           item = _this$props.item,
-          optionChosenIndex = _this$props.optionChosenIndex;
+          optionChosenIndex = _this$props.optionChosenIndex,
+          quantity = _this$props.quantity;
       var typeOfProduct = item.itemName.split(' ');
       typeOfProduct = typeOfProduct.slice(1);
       typeOfProduct = typeOfProduct.join(' ');
@@ -35186,7 +35187,7 @@ var Modal = /*#__PURE__*/function (_React$Component) {
         optionChosenIndex: optionChosenIndex
       }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Checkout__WEBPACK_IMPORTED_MODULE_4__["default"], {
         price: item.options[optionChosenIndex].price,
-        quantity: 2
+        quantity: quantity
       })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MiddleDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_SeeSample__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FreeShipping__WEBPACK_IMPORTED_MODULE_6__["default"], null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Carousel__WEBPACK_IMPORTED_MODULE_7__["default"], {
         typeOfProduct: typeOfProduct
       }))));
