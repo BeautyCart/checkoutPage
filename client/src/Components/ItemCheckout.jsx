@@ -44,15 +44,22 @@ class ItemCheckout extends React.Component {
     super(props);
     this.state = {
       showModal: false,
+      quantity: 1,
     };
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
+    this.setQuantity = this.setQuantity.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
-  closeModal() {
+  setQuantity(quantity) {
     this.setState({
-      showModal: false,
+      quantity,
     });
+  }
+
+  handleSelect(e) {
+    this.setQuantity(e.target.value);
   }
 
   openModal() {
@@ -61,13 +68,19 @@ class ItemCheckout extends React.Component {
     });
   }
 
+  closeModal() {
+    this.setState({
+      showModal: false,
+    });
+  }
+
   render() {
     const { item, optionChosenIndex } = this.props;
-    const { showModal } = this.state;
+    const { showModal, quantity } = this.state;
     return (
       <Container>
         <QuantityDiv>
-          <DropDown>
+          <DropDown value={quantity} onChange={this.handleSelect}>
             <option key="1" value="1">1</option>
             <option key="2" value="2">2</option>
             <option key="3" value="3">3</option>
@@ -92,6 +105,7 @@ class ItemCheckout extends React.Component {
             optionChosenIndex={optionChosenIndex}
             closeModal={this.closeModal}
             openModal={this.openModal}
+            quantity={quantity}
           />
         )
           : null}

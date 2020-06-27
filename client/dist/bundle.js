@@ -33974,19 +33974,27 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
 
     _this = _super.call(this, props);
     _this.state = {
-      showModal: false
+      showModal: false,
+      quantity: 1
     };
     _this.closeModal = _this.closeModal.bind(_assertThisInitialized(_this));
     _this.openModal = _this.openModal.bind(_assertThisInitialized(_this));
+    _this.setQuantity = _this.setQuantity.bind(_assertThisInitialized(_this));
+    _this.handleSelect = _this.handleSelect.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(ItemCheckout, [{
-    key: "closeModal",
-    value: function closeModal() {
+    key: "setQuantity",
+    value: function setQuantity(quantity) {
       this.setState({
-        showModal: false
+        quantity: quantity
       });
+    }
+  }, {
+    key: "handleSelect",
+    value: function handleSelect(e) {
+      this.setQuantity(e.target.value);
     }
   }, {
     key: "openModal",
@@ -33996,13 +34004,25 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "closeModal",
+    value: function closeModal() {
+      this.setState({
+        showModal: false
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
           item = _this$props.item,
           optionChosenIndex = _this$props.optionChosenIndex;
-      var showModal = this.state.showModal;
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(QuantityDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DropDown, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+      var _this$state = this.state,
+          showModal = _this$state.showModal,
+          quantity = _this$state.quantity;
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(QuantityDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DropDown, {
+        value: quantity,
+        onChange: this.handleSelect
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         key: "1",
         value: "1"
       }, "1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
@@ -34042,7 +34062,8 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
         item: item,
         optionChosenIndex: optionChosenIndex,
         closeModal: this.closeModal,
-        openModal: this.openModal
+        openModal: this.openModal,
+        quantity: quantity
       }) : null);
     }
   }]);
