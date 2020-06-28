@@ -35401,6 +35401,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _elements_Border__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../elements/Border */ "./src/elements/Border.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -35423,18 +35424,8 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n  font-size: 12px;\n  border-color: #ccc;\n  border-style: solid;\n  padding: 8px 12px;\n  background-color: transparent;\n  border-radius: 4px;\n  border-width: 1px;\n  display: inline-block;\n  cursor: pointer;\n"]);
-
-  _templateObject7 = function _templateObject7() {
-    return data;
-  };
-
-  return data;
-}
-
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n  line-height: 1.5;\n  margin-top: ", ";\n  margin-bottom: 4px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  font-size: 12px;\n  border-color: #ccc;\n  border-style: solid;\n  padding: 8px 12px;\n  background-color: transparent;\n  border-radius: 4px;\n  border-width: 1px;\n  display: inline-block;\n  cursor: pointer;\n  ", ":focus {\n    outline: none;\n  }\n"]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -35444,7 +35435,7 @@ function _templateObject6() {
 }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n  border: 3px solid ", ";\n  padding: 1px;\n  border-radius: 8px;\n  display: inline-block;\n"]);
+  var data = _taggedTemplateLiteral(["\n  line-height: 1.5;\n  margin-top: ", ";\n  margin-bottom: 4px;\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -35497,17 +35488,15 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
+
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
 var OptionChosenDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2());
 var OptionsDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject3());
 var OptionDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject4());
-var Border = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject5(), function (props) {
-  return props.color;
-});
-var OptionLabelDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject6(), function (props) {
+var OptionLabelDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject5(), function (props) {
   return props.value > 0 ? '12px' : '0px';
 });
-var Button = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].button(_templateObject7());
+var Button = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].button(_templateObject6(), undefined);
 
 var Options = /*#__PURE__*/function (_React$Component) {
   _inherits(Options, _React$Component);
@@ -35557,8 +35546,8 @@ var Options = /*#__PURE__*/function (_React$Component) {
         return options.map(function (option, index) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(OptionDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(OptionLabelDiv, {
             value: index
-          }, option.label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Border, {
-            color: index === optionChosenIndex ? 'black' : 'transparant'
+          }, option.label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Border__WEBPACK_IMPORTED_MODULE_2__["default"], {
+            color: index === Number(optionChosenIndex) ? 'black' : 'transparent'
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Button, {
             type: "button",
             value: index,
@@ -35746,6 +35735,35 @@ var StarReview = /*#__PURE__*/function (_React$Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (StarReview);
+
+/***/ }),
+
+/***/ "./src/elements/Border.js":
+/*!********************************!*\
+  !*** ./src/elements/Border.js ***!
+  \********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n  border: 3px solid ", ";\n  padding: 1px;\n  border-radius: 8px;\n  display: inline-block;\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+/* harmony default export */ __webpack_exports__["default"] = (styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div(_templateObject(), function (props) {
+  return props.color;
+}));
 
 /***/ }),
 

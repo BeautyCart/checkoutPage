@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Border from '../elements/Border';
 
 const Container = styled.div`
   font-family: Arial, Helvetica, sans-serif;
@@ -21,13 +22,6 @@ const OptionDiv = styled.div`
   width: 612px;
 `;
 
-const Border = styled.div`
-  border: 3px solid ${(props) => (props.color)};
-  padding: 1px;
-  border-radius: 8px;
-  display: inline-block;
-`;
-
 const OptionLabelDiv = styled.div`
   line-height: 1.5;
   margin-top: ${(props) => (props.value > 0 ? '12px' : '0px')};
@@ -44,6 +38,9 @@ const Button = styled.button`
   border-width: 1px;
   display: inline-block;
   cursor: pointer;
+  ${this}:focus {
+    outline: none;
+  }
 `;
 
 class Options extends React.Component {
@@ -77,7 +74,7 @@ class Options extends React.Component {
       return options.map((option, index) => (
         <OptionDiv>
           <OptionLabelDiv value={index}>{option.label}</OptionLabelDiv>
-          <Border color={(index === optionChosenIndex) ? 'black' : 'transparant'}>
+          <Border color={(index === Number(optionChosenIndex)) ? 'black' : 'transparent'}>
             <Button type="button" value={index} key={_id + option.label} onClick={this.handleClick}>
               {option.amount}
             </Button>
