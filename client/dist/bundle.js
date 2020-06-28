@@ -34088,8 +34088,80 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _StarsRating__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./StarsRating */ "./src/Components/StarsRating.jsx");
+function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _templateObject12() {
+  var data = _taggedTemplateLiteral(["\n  margin-left: 5px;\n"]);
+
+  _templateObject12 = function _templateObject12() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject11() {
+  var data = _taggedTemplateLiteral(["\n  width: 1em;\n  box-sizing: border-box;\n  display: block;\n  position: static;\n"]);
+
+  _templateObject11 = function _templateObject11() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject10() {
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  box-sizing: border-box;\n"]);
+
+  _templateObject10 = function _templateObject10() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject9() {
+  var data = _taggedTemplateLiteral(["\n  padding-left: 5px;\n  padding-right: 5px;\n"]);
+
+  _templateObject9 = function _templateObject9() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject8() {
+  var data = _taggedTemplateLiteral(["\n  font-size: 12px;\n  font-weight: 700;\n  height: 13.5px;\n  display: flex;\n  justify-content: flex-start;\n"]);
+
+  _templateObject8 = function _templateObject8() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject7() {
-  var data = _taggedTemplateLiteral(["\n  font-size: 12px;\n  font-weight: 700;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 100%;\n  height: 18px;\n  margin-top: 4px;\n  margin-bottom: 12px;\n  font-size: 12px;\n  color: #757575;\n"]);
 
   _templateObject7 = function _templateObject7() {
     return data;
@@ -34169,25 +34241,77 @@ var PriceDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_te
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject4());
 var BrandDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject5());
 var ItemNameDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject6());
-var ReviewsAndHeartsDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject7());
+var ItemIdDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject7());
+var ReviewsAndHeartsDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject8());
+var ReviewAmount = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject9());
+var LovesContainer = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject10());
+var Svg = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].svg(_templateObject11());
+var HeartsAmountDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject12());
 
-function ItemInfo(props) {
-  var _props$item = props.item,
-      brand = _props$item.brand,
-      itemName = _props$item.itemName,
-      reviews = _props$item.reviews,
-      hearts = _props$item.hearts,
-      options = _props$item.options,
-      optionChosenIndex = props.optionChosenIndex;
+var ItemInfo = /*#__PURE__*/function (_React$Component) {
+  _inherits(ItemInfo, _React$Component);
 
-  if (optionChosenIndex !== undefined) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProductInfoDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BrandDiv, null, brand), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ItemNameDiv, null, itemName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ReviewsAndHeartsDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_StarsRating__WEBPACK_IMPORTED_MODULE_2__["default"], {
-      reviews: reviews
-    }), reviews, ' ', "5k reviews |", ' ', hearts)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProductPriceDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PriceDiv, null, options[optionChosenIndex].price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "SPEND $50 FOR FREE SHIPPING")));
+  var _super = _createSuper(ItemInfo);
+
+  function ItemInfo() {
+    _classCallCheck(this, ItemInfo);
+
+    return _super.apply(this, arguments);
   }
 
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProductInfoDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BrandDiv, null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ItemNameDiv, null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ReviewsAndHeartsDiv, null, "Loading...", ' ', "5k reviews |", ' ', "Loading...")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProductPriceDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PriceDiv, null, "$Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "SPEND $50 FOR FREE SHIPPING")));
-}
+  _createClass(ItemInfo, [{
+    key: "getAmount",
+    value: function getAmount(type) {
+      var _this$props$item = this.props.item,
+          reviewAmount = _this$props$item.reviewAmount,
+          hearts = _this$props$item.hearts;
+      var amount;
+
+      if (type === 'reviews') {
+        amount = reviewAmount.toString();
+      } else {
+        amount = hearts.toString();
+      }
+
+      if (amount.length >= 4) {
+        amount = "".concat(amount.slice(0, amount.length - 3), "K ").concat(type);
+      } else {
+        amount += ' ${type}';
+      }
+
+      return amount;
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          _this$props$item2 = _this$props.item,
+          _id = _this$props$item2._id,
+          brand = _this$props$item2.brand,
+          itemName = _this$props$item2.itemName,
+          reviews = _this$props$item2.reviews,
+          hearts = _this$props$item2.hearts,
+          options = _this$props$item2.options,
+          optionChosenIndex = _this$props.optionChosenIndex;
+
+      if (optionChosenIndex !== undefined) {
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProductInfoDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BrandDiv, null, brand), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ItemNameDiv, null, itemName), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ItemIdDiv, null, "ITEM", ' ', _id.slice(0, 8)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ReviewsAndHeartsDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_StarsRating__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          reviews: reviews
+        }), ' ', /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ReviewAmount, null, this.getAmount('reviews'), ' ', "|"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(LovesContainer, {
+          className: "lovesContainer"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Svg, {
+          viewBox: "0 0 24 24"
+        }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+          d: "M22 3.1c2.7 2.2 2.6 7.2.1 9.7-2.2 2.8-7.4 8.1-9.3 9.6-.5.4-1.1.4-1.6 0-1.8-1.5-7-6.8-9.2-9.6-2.6-2.6-2.7-7.6 0-9.7C4.6.5 9.7.7 12 4.2 14.3.8 19.3.5 22 3.1z"
+        })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(HeartsAmountDiv, null, this.getAmount('loves'))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProductPriceDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PriceDiv, null, options[optionChosenIndex].price), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "SPEND $50 FOR FREE SHIPPING")));
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProductInfoDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BrandDiv, null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ItemNameDiv, null, "Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ReviewsAndHeartsDiv, null, "Loading...", ' ', "5k reviews |", ' ', "Loading...")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ProductPriceDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PriceDiv, null, "$Loading..."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "SPEND $50 FOR FREE SHIPPING")));
+    }
+  }]);
+
+  return ItemInfo;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
 
 /* harmony default export */ __webpack_exports__["default"] = (ItemInfo);
 
@@ -35606,7 +35730,7 @@ function _templateObject2() {
 }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  height: 100%;\n  width: 20%;\n  position: relative;\n  clip-path: polygon(50% 0%, 63% 34%, 98% 35%, 72% 58%, 79% 91%, 50% 70%, 21% 91%, 29% 57%, 2% 35%, 37% 34%);\n"]);
+  var data = _taggedTemplateLiteral(["\n  height: 100%;\n  width: 20%;\n  position: relative;\n  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -35672,7 +35796,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  width: 68.016px;\n  height: 12px;\n  position: relative;\n  display: flex;\n  direction: row;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 68.016px;\n  height: 13px;\n  position: relative;\n  display: flex;\n  direction: row;\n"]);
 
   _templateObject = function _templateObject() {
     return data;

@@ -5,7 +5,7 @@ const Container = styled.div`
   height: 100%;
   width: 20%;
   position: relative;
-  clip-path: polygon(50% 0%, 63% 34%, 98% 35%, 72% 58%, 79% 91%, 50% 70%, 21% 91%, 29% 57%, 2% 35%, 37% 34%);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 `;
 
 const Unfilled = styled.div`

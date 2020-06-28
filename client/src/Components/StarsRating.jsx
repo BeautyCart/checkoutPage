@@ -4,7 +4,7 @@ import Star from './Star';
 
 const Container = styled.div`
   width: 68.016px;
-  height: 12px;
+  height: 13px;
   position: relative;
   display: flex;
   direction: row;
