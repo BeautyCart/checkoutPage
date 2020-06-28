@@ -13,7 +13,7 @@ const SeeSampleDiv = styled.div`
 `;
 
 const BasketSpan = styled.span`
-  color: blue;
+  color: #1470f5;
   ${this}:hover {
   text-decoration: underline;
   }
