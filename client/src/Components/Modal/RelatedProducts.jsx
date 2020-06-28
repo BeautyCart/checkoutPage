@@ -16,6 +16,9 @@ const ArrowButton = styled.button`
   padding-left: 0px;
   background-color: transparent;
   position: relative;
+  ${this}:focus {
+    outline: none;
+  }
 `;
 
 const SvgLeft = styled.svg`
@@ -50,7 +53,7 @@ const RelatedProductsContainer = styled.div`
   display: flex;
   flex-direction: row;
   transform: ${(props) => `translateX(${-534 * props.page}px)`};
-  transition-duration: .3s;
+  transition-duration: .8s;
 `;
 
 class RelatedProducts extends React.Component {

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import RelatedProduct from './RelatedProducts';
-import Page from './Page';
+import Pages from './Pages';
 
 const Container = styled.div`
   width: 100%;
@@ -65,7 +65,7 @@ class Carousel extends React.Component {
       <Container>
         <HeaderDiv>We Think You'll Also Love</HeaderDiv>
         <RelatedProduct relatedProducts={relatedProducts} page={page} setPage={this.setPage} />
-        <Page />
+        <Pages page={page} setPage={this.setPage} />
       </Container>
     );
   }

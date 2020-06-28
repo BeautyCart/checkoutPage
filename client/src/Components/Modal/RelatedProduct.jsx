@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import StarsRating from '../StarsRating';
 
 const Container = styled.div`
   min-width: 121.5px;
@@ -21,7 +22,7 @@ const ImageDiv = styled.div`
 
 const BrandAndItemDiv = styled.div`
   width: 100%;
-  height: 30px;
+  min-height: 30px;
   display: flex;
   text-align: center;
   flex-direction: column;
@@ -54,7 +55,7 @@ const ReviewsDiv = styled.div`
 function RelatedProduct(props) {
   const {
     product: {
-      image, brand, itemName, options,
+      image, brand, itemName, options, reviews,
     },
   } = props;
   return (
@@ -74,7 +75,7 @@ function RelatedProduct(props) {
         {options[0].price}
       </PriceDiv>
       <ReviewsDiv>
-        Reviews goes here
+        <StarsRating reviews={reviews} />
       </ReviewsDiv>
     </Container>
   );

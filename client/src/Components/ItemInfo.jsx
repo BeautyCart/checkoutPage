@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import StarsRating from './StarsRating';
 
 const ProductInfoDiv = styled.div`
   width: 254px;
@@ -59,6 +60,7 @@ function ItemInfo(props) {
           <BrandDiv>{brand}</BrandDiv>
           <ItemNameDiv>{itemName}</ItemNameDiv>
           <ReviewsAndHeartsDiv>
+            <StarsRating reviews={reviews} />
             {reviews}
             {' '}
             5k reviews |

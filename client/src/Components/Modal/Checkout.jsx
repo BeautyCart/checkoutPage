@@ -25,28 +25,26 @@ const ButtonsDiv = styled.div`
 `;
 
 class Checkout extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
-  static parsePrice(price, quantity) {
-    price = price.slice(1);
+  static parsePrice(inputPrice, quantity) {
+    let price = inputPrice.slice(1);
     price = `$${parseFloat(price) * quantity}.00`;
     return price;
   }
 
   render() {
     const { price, quantity } = this.props;
+    const quantityNumber = Number(quantity);
+    console.log(quantityNumber, typeof quantityNumber);
     return (
       <Container>
         <BasketTotalDiv>
           Basket Total (
           {quantity}
           {' '}
-          {(quantity !== '1') ? 'items' : 'item'}
+          {(quantityNumber > 1) ? 'items' : 'item'}
           :
           {' '}
-          {Checkout.parsePrice(price, quantity)}
+          {Checkout.parsePrice(price, quantityNumber)}
           )
         </BasketTotalDiv>
         <ButtonsDiv>
