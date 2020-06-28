@@ -35423,8 +35423,18 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _templateObject7() {
+  var data = _taggedTemplateLiteral(["\n  font-size: 12px;\n  border-color: #ccc;\n  border-style: solid;\n  padding: 8px 12px;\n  background-color: transparent;\n  border-radius: 4px;\n  border-width: 1px;\n  display: inline-block;\n  cursor: pointer;\n"]);
+
+  _templateObject7 = function _templateObject7() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject6() {
-  var data = _taggedTemplateLiteral(["\n  font-size: 12px;\n  border-color: #ccc;\n  border-style: solid;\n  padding: 8px 12px;\n  background-color: transparent;\n  border-radius: 4px;\n  border-width: 1px;\n  cursor: pointer;\n"]);
+  var data = _taggedTemplateLiteral(["\n  line-height: 1.5;\n  margin-top: ", ";\n  margin-bottom: 4px;\n"]);
 
   _templateObject6 = function _templateObject6() {
     return data;
@@ -35434,7 +35444,7 @@ function _templateObject6() {
 }
 
 function _templateObject5() {
-  var data = _taggedTemplateLiteral(["\n  line-height: 1.5;\n  margin-top: ", ";\n  margin-bottom: 4px;\n"]);
+  var data = _taggedTemplateLiteral(["\n  border: 3px solid ", ";\n  padding: 1px;\n  border-radius: 8px;\n  display: inline-block;\n"]);
 
   _templateObject5 = function _templateObject5() {
     return data;
@@ -35491,10 +35501,13 @@ var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_t
 var OptionChosenDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2());
 var OptionsDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject3());
 var OptionDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject4());
-var OptionLabelDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject5(), function (props) {
+var Border = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject5(), function (props) {
+  return props.color;
+});
+var OptionLabelDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject6(), function (props) {
   return props.value > 0 ? '12px' : '0px';
 });
-var Button = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].button(_templateObject6());
+var Button = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].button(_templateObject7());
 
 var Options = /*#__PURE__*/function (_React$Component) {
   _inherits(Options, _React$Component);
@@ -35537,18 +35550,21 @@ var Options = /*#__PURE__*/function (_React$Component) {
 
       var _this$props2 = this.props,
           options = _this$props2.options,
-          _id = _this$props2.item._id;
+          _id = _this$props2.item._id,
+          optionChosenIndex = _this$props2.optionChosenIndex;
 
       if (options) {
         return options.map(function (option, index) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(OptionDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(OptionLabelDiv, {
             value: index
-          }, option.label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Button, {
+          }, option.label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Border, {
+            color: index === optionChosenIndex ? 'black' : 'transparant'
+          }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Button, {
             type: "button",
             value: index,
             key: _id + option.label,
             onClick: _this2.handleClick
-          }, option.amount));
+          }, option.amount)));
         });
       }
 

@@ -21,6 +21,13 @@ const OptionDiv = styled.div`
   width: 612px;
 `;
 
+const Border = styled.div`
+  border: 3px solid ${(props) => (props.color)};
+  padding: 1px;
+  border-radius: 8px;
+  display: inline-block;
+`;
+
 const OptionLabelDiv = styled.div`
   line-height: 1.5;
   margin-top: ${(props) => (props.value > 0 ? '12px' : '0px')};
@@ -35,6 +42,7 @@ const Button = styled.button`
   background-color: transparent;
   border-radius: 4px;
   border-width: 1px;
+  display: inline-block;
   cursor: pointer;
 `;
 
@@ -64,14 +72,16 @@ class Options extends React.Component {
   }
 
   displayOptions() {
-    const { options, item: { _id } } = this.props;
+    const { options, item: { _id }, optionChosenIndex } = this.props;
     if (options) {
       return options.map((option, index) => (
         <OptionDiv>
           <OptionLabelDiv value={index}>{option.label}</OptionLabelDiv>
-          <Button type="button" value={index} key={_id + option.label} onClick={this.handleClick}>
-            {option.amount}
-          </Button>
+          <Border color={(index === optionChosenIndex) ? 'black' : 'transparant'}>
+            <Button type="button" value={index} key={_id + option.label} onClick={this.handleClick}>
+              {option.amount}
+            </Button>
+          </Border>
         </OptionDiv>
       ));
     }
