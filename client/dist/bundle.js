@@ -33900,6 +33900,36 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _templateObject8() {
+  var data = _taggedTemplateLiteral(["\n  color: ", "\n"]);
+
+  _templateObject8 = function _templateObject8() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject7() {
+  var data = _taggedTemplateLiteral(["\n  width: 1.5em;\n  margin-right: 6.75px;\n  fill: ", ";\n"]);
+
+  _templateObject7 = function _templateObject7() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject6() {
+  var data = _taggedTemplateLiteral(["\n  display: flex;\n  justify-content: center;\n  flex-direction: row;\n  align-items: center;\n"]);
+
+  _templateObject6 = function _templateObject6() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject5() {
   var data = _taggedTemplateLiteral(["\n  width: 222px;\n  height: 173px;\n  display: flex;\n  justify-content: space-between;\n"]);
 
@@ -33961,6 +33991,13 @@ var DropDown = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].select(
 var ButtonsDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject3());
 var AddToBasketOrLovesDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject4());
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject5());
+var AddToLovesDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject6());
+var Svg = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].svg(_templateObject7(), function (props) {
+  return props.color;
+});
+var DescriptionDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject8(), function (props) {
+  return props.color;
+});
 
 var ItemCheckout = /*#__PURE__*/function (_React$Component) {
   _inherits(ItemCheckout, _React$Component);
@@ -33975,12 +34012,17 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       showModal: false,
-      quantity: 1
+      quantity: 1,
+      loved: false,
+      tempLoved: false
     };
     _this.closeModal = _this.closeModal.bind(_assertThisInitialized(_this));
     _this.openModal = _this.openModal.bind(_assertThisInitialized(_this));
     _this.setQuantity = _this.setQuantity.bind(_assertThisInitialized(_this));
     _this.handleSelect = _this.handleSelect.bind(_assertThisInitialized(_this));
+    _this.svg = _this.svg.bind(_assertThisInitialized(_this));
+    _this.setLoved = _this.setLoved.bind(_assertThisInitialized(_this));
+    _this.setTempLoved = _this.setTempLoved.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -33992,15 +34034,21 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "handleSelect",
-    value: function handleSelect(e) {
-      this.setQuantity(Number(e.target.value));
+    key: "setLoved",
+    value: function setLoved() {
+      this.setState(function (state) {
+        return {
+          loved: !state.loved
+        };
+      });
     }
   }, {
-    key: "openModal",
-    value: function openModal() {
-      this.setState({
-        showModal: true
+    key: "setTempLoved",
+    value: function setTempLoved(reset) {
+      this.setState(function (state) {
+        return {
+          tempLoved: !state.tempLoved
+        };
       });
     }
   }, {
@@ -34011,14 +34059,67 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "openModal",
+    value: function openModal() {
+      this.setState({
+        showModal: true
+      });
+    }
+  }, {
+    key: "handleSelect",
+    value: function handleSelect(e) {
+      this.setQuantity(Number(e.target.value));
+    }
+  }, {
+    key: "svg",
+    value: function svg() {
+      var _this$state = this.state,
+          loved = _this$state.loved,
+          tempLoved = _this$state.tempLoved;
+      var path;
+
+      if (loved || tempLoved) {
+        path = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+          d: "M22 3.1c2.7 2.2 2.6 7.2.1 9.7-2.2 2.8-7.4 8.1-9.3 9.6-.5.4-1.1.4-1.6 0-1.8-1.5-7-6.8-9.2-9.6-2.6-2.6-2.7-7.6 0-9.7C4.6.5 9.7.7 12 4.2 14.3.8 19.3.5 22 3.1z"
+        });
+      } else {
+        path = /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+          d: "M22 3.1c2.7 2.2 2.6 7.2.1 9.7-2.2 2.8-7.4 8.1-9.3 9.6-.5.4-1.1.4-1.6 0-1.8-1.5-7-6.8-9.2-9.6-2.6-2.6-2.7-7.6 0-9.7C4.6.5 9.7.7 12 4.2 14.3.8 19.3.5 22 3.1zm-.7.8c-2.4-2.4-7.2-2-8.9 1.5-.1.3-.4.4-.7.2-.1 0-.2-.1-.2-.2-1.6-3.5-6.5-4-8.9-1.5C.4 5.6.5 10 2.7 12.2c2.2 2.7 7.3 8 9.1 9.4.1.1.2.1.3 0 1.8-1.4 6.9-6.7 9.1-9.5 2.3-2.1 2.4-6.5.1-8.2z"
+        });
+      }
+
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Svg, {
+        color: loved || tempLoved ? 'rgb(236, 4, 15)' : 'black',
+        viewBox: "0 0 24 24"
+      }, path);
+    }
+  }, {
+    key: "description",
+    value: function description() {
+      var _this$state2 = this.state,
+          loved = _this$state2.loved,
+          tempLoved = _this$state2.tempLoved;
+
+      if (loved) {
+        if (tempLoved) {
+          return 'Unlove';
+        }
+
+        return 'Loved';
+      }
+
+      return 'Add to loves';
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
           item = _this$props.item,
           optionChosenIndex = _this$props.optionChosenIndex;
-      var _this$state = this.state,
-          showModal = _this$state.showModal,
-          quantity = _this$state.quantity;
+      var _this$state3 = this.state,
+          showModal = _this$state3.showModal,
+          quantity = _this$state3.quantity,
+          tempLoved = _this$state3.tempLoved;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(QuantityDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DropDown, {
         value: quantity,
         onChange: this.handleSelect
@@ -34054,11 +34155,18 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
         value: 10
       }, "10"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AddToBasketOrLovesDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ButtonsDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
         redBtn: true,
+        border: "transparent",
         onClick: this.openModal,
         type: "button"
       }, "Add To Basket"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        type: "button"
-      }, "Add To Loves"))), showModal ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Modal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        border: tempLoved ? 'grey' : 'black',
+        type: "button",
+        onClick: this.setLoved,
+        onMouseEnter: this.setTempLoved,
+        onMouseLeave: this.setTempLoved
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AddToLovesDiv, null, this.svg(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DescriptionDiv, {
+        color: tempLoved ? 'grey' : 'black'
+      }, this.description()))))), showModal ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Modal__WEBPACK_IMPORTED_MODULE_2__["default"], {
         item: item,
         optionChosenIndex: optionChosenIndex,
         closeModal: this.closeModal,
@@ -35902,7 +36010,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  font-size: 12px;\n  cursor: pointer;\n  text-transform: uppercase;\n  width: 100%;\n  color: ", ";\n  background-color: ", ";\n  border: ", ";\n  font-weight: 700;\n  min-height: 40px;\n  max-height:40px;\n  border-radius: 4px;\n  transition: background-color 0.2s ease 0s;\n"]);
+  var data = _taggedTemplateLiteral(["\n  font-size: 12px;\n  cursor: pointer;\n  text-transform: uppercase;\n  width: 100%;\n  color: ", ";\n  background-color: ", ";\n  border: ", ";\n  font-weight: 700;\n  min-height: 40px;\n  max-height:40px;\n  border-radius: 4px;\n  transition: background-color 0.2s ease 0s;\n  ", ":focus {\n    outline: none;\n  }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -35919,8 +36027,8 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 }, function (props) {
   return Object.prototype.hasOwnProperty.call(props, 'redBtn') ? 'rgb(236, 4, 15)' : 'white';
 }, function (props) {
-  return Object.prototype.hasOwnProperty.call(props, 'redBtn') ? '1px solid transparent' : '1px solid black';
-}));
+  return "1px solid ".concat(props.border);
+}, undefined));
 
 /***/ }),
 
