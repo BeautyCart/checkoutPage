@@ -5,11 +5,15 @@ export default styled.button`
   cursor: pointer;
   text-transform: uppercase;
   width: 100%;
-  color: ${(props) => (Object.prototype.hasOwnProperty.call(props, 'redBtn') ? 'rgb(255, 255, 255)' : 'black')};
-  background-color: ${(props) => (Object.prototype.hasOwnProperty.call(props, 'redBtn') ? 'rgb(236, 4, 15)' : 'white')};
-  border: ${(props) => (Object.prototype.hasOwnProperty.call(props, 'redBtn') ? '1px solid transparent' : '1px solid black')};
+  color: ${(props) => (props.color)};
+  background-color: ${(props) => props.backgroundColor};
+  border: ${(props) => `1px solid ${props.border}`};
   font-weight: 700;
   min-height: 40px;
+  max-height:40px;
   border-radius: 4px;
   transition: background-color 0.2s ease 0s;
+  ${this}:focus {
+    outline: none;
+  }
 `;
