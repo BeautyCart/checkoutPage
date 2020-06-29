@@ -91,7 +91,7 @@ class ItemInfo extends React.Component {
     if (amount.length >= 4) {
       amount = `${amount.slice(0, amount.length - 3)}K ${type}`;
     } else {
-      amount += ' ${type}';
+      amount += ` ${type}`;
     }
     return amount;
   }

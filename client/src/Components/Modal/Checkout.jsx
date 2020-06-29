@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../../elements/Button';
+import Border from '../../elements/Border';
 
 const Container = styled.div`
   font-family: Arial, Helvetica, sans-serif;
@@ -18,7 +19,7 @@ const BasketTotalDiv = styled.div`
 
 const ButtonsDiv = styled.div`
   width: 255px;
-  height: 88px;
+  height: 92px;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -40,9 +41,11 @@ class Checkout extends React.Component {
     this.state = {
       hover: false,
       checkoutHover: false,
+      buttonChosen: 'checkout',
     };
     this.setHover = this.setHover.bind(this);
     this.setCheckoutHover = this.setCheckoutHover.bind(this);
+    this.setButtonChosen = this.setButtonChosen.bind(this);
   }
 
   setHover() {
@@ -57,9 +60,22 @@ class Checkout extends React.Component {
     }));
   }
 
+  setButtonChosen() {
+    const { buttonChosen } = this.state;
+    if (buttonChosen === 'checkout') {
+      this.setState({
+        buttonChosen: 'continue shopping',
+      });
+    } else {
+      this.setState({
+        buttonChosen: 'checkout',
+      });
+    }
+  }
+
   render() {
     const { price, quantity } = this.props;
-    const { hover, checkoutHover } = this.state;
+    const { hover, checkoutHover, buttonChosen } = this.state;
     const quantityNumber = Number(quantity);
     return (
       <Container>
@@ -74,12 +90,16 @@ class Checkout extends React.Component {
           )
         </BasketTotalDiv>
         <ButtonsDiv>
-          <Button backgroundColor={checkoutHover ? '#d4002e' : 'rgb(236, 4, 15)'} onMouseEnter={this.setCheckoutHover} onMouseLeave={this.setCheckoutHover} color="white" border="transparent">Checkout</Button>
-          <Button backgroundColor="white" color="black" onMouseEnter={this.setHover} onMouseLeave={this.setHover} border={(hover) ? 'grey' : 'black'}>
-            <DescriptionDiv color={(hover) ? 'grey' : 'black'}>
-              Continue Shopping
-            </DescriptionDiv>
-          </Button>
+          <Border size="1px" radius="5px" color={(buttonChosen === 'checkout') ? 'black' : 'transparent'}>
+            <Button onClick={this.setButtonChosen} backgroundColor={checkoutHover ? '#d4002e' : 'rgb(236, 4, 15)'} onMouseEnter={this.setCheckoutHover} onMouseLeave={this.setCheckoutHover} color="white" border="transparent">Checkout</Button>
+          </Border>
+          <Border size="1px" radius="5px" color={(buttonChosen === 'continue shopping') ? 'black' : 'transparent'}>
+            <Button onClick={this.setButtonChosen} backgroundColor="white" color="black" onMouseEnter={this.setHover} onMouseLeave={this.setHover} border={(hover) ? 'grey' : 'black'}>
+              <DescriptionDiv color={(hover) ? 'grey' : 'black'}>
+                Continue Shopping
+              </DescriptionDiv>
+            </Button>
+          </Border>
         </ButtonsDiv>
       </Container>
     );

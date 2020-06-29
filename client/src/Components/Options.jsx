@@ -46,12 +46,25 @@ const Button = styled.button`
 class Options extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      hover: null,
+    };
     this.handleClick = this.handleClick.bind(this);
+    this.handleHover = this.handleHover.bind(this);
   }
 
-  handleClick(e) {
-    const { handleOptionClick } = this.props;
-    handleOptionClick(e.target.value);
+  getBorderColor(index) {
+    const { optionChosenIndex } = this.props;
+    const { hover } = this.state;
+    let color;
+    if (index === Number(optionChosenIndex)) {
+      color = 'black';
+    } else if (Number(hover) === index && hover !== null) {
+      color = 'grey';
+    } else {
+      color = 'transparent';
+    }
+    return color;
   }
 
   displayOptionChosen() {
@@ -68,14 +81,32 @@ class Options extends React.Component {
     return <p>Loading...</p>;
   }
 
+  handleHover(e) {
+    const { hover } = this.state;
+    if (!hover) {
+      this.setState({
+        hover: e.target.value,
+      });
+    } else {
+      this.setState({
+        hover: null,
+      });
+    }
+  }
+
+  handleClick(e) {
+    const { handleOptionClick } = this.props;
+    handleOptionClick(e.target.value);
+  }
+
   displayOptions() {
-    const { options, item: { _id }, optionChosenIndex } = this.props;
+    const { options, item: { _id } } = this.props;
     if (options) {
       return options.map((option, index) => (
         <OptionDiv>
           <OptionLabelDiv value={index}>{option.label}</OptionLabelDiv>
-          <Border color={(index === Number(optionChosenIndex)) ? 'black' : 'transparent'}>
-            <Button type="button" value={index} key={_id + option.label} onClick={this.handleClick}>
+          <Border size="3px" radius="8px" color={this.getBorderColor(index)}>
+            <Button type="button" value={index} key={_id + option.label} onMouseEnter={this.handleHover} onMouseLeave={this.handleHover} onClick={this.handleClick}>
               {option.amount}
             </Button>
           </Border>

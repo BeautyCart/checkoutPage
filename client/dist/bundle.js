@@ -33802,7 +33802,6 @@ var App = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "setRandomProduct",
     value: function setRandomProduct(productsData) {
-      // console.log('inside set random product');
       var index = App.getRandomIndex(0, productsData.length - 1);
       return this.setCurrentItem(productsData[index]);
     }
@@ -34401,7 +34400,7 @@ var ItemInfo = /*#__PURE__*/function (_React$Component) {
       if (amount.length >= 4) {
         amount = "".concat(amount.slice(0, amount.length - 3), "K ").concat(type);
       } else {
-        amount += ' ${type}';
+        amount += " ".concat(type);
       }
 
       return amount;
@@ -34539,7 +34538,6 @@ var Carousel = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "setRelatedProducts",
     value: function setRelatedProducts(products) {
-      console.log(products);
       this.setState({
         relatedProducts: products
       });
@@ -34600,6 +34598,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _elements_Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../elements/Button */ "./src/elements/Button.js");
+/* harmony import */ var _elements_Border__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../elements/Border */ "./src/elements/Border.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -34633,7 +34632,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  width: 255px;\n  height: 88px;\n  display: flex;\n  justify-content: space-between;\n  flex-direction: column;\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 255px;\n  height: 92px;\n  display: flex;\n  justify-content: space-between;\n  flex-direction: column;\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -34667,6 +34666,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
+
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
 var BasketTotalDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2());
 var ButtonsDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject3());
@@ -34696,10 +34696,12 @@ var Checkout = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this, props);
     _this.state = {
       hover: false,
-      checkoutHover: false
+      checkoutHover: false,
+      buttonChosen: 'checkout'
     };
     _this.setHover = _this.setHover.bind(_assertThisInitialized(_this));
     _this.setCheckoutHover = _this.setCheckoutHover.bind(_assertThisInitialized(_this));
+    _this.setButtonChosen = _this.setButtonChosen.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -34722,6 +34724,21 @@ var Checkout = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "setButtonChosen",
+    value: function setButtonChosen() {
+      var buttonChosen = this.state.buttonChosen;
+
+      if (buttonChosen === 'checkout') {
+        this.setState({
+          buttonChosen: 'continue shopping'
+        });
+      } else {
+        this.setState({
+          buttonChosen: 'checkout'
+        });
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
@@ -34729,15 +34746,26 @@ var Checkout = /*#__PURE__*/function (_React$Component) {
           quantity = _this$props.quantity;
       var _this$state = this.state,
           hover = _this$state.hover,
-          checkoutHover = _this$state.checkoutHover;
+          checkoutHover = _this$state.checkoutHover,
+          buttonChosen = _this$state.buttonChosen;
       var quantityNumber = Number(quantity);
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BasketTotalDiv, null, "Basket Total (", quantity, ' ', quantityNumber > 1 ? 'items' : 'item', ":", ' ', Checkout.parsePrice(price, quantityNumber), ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ButtonsDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BasketTotalDiv, null, "Basket Total (", quantity, ' ', quantityNumber > 1 ? 'items' : 'item', ":", ' ', Checkout.parsePrice(price, quantityNumber), ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ButtonsDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Border__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        size: "1px",
+        radius: "5px",
+        color: buttonChosen === 'checkout' ? 'black' : 'transparent'
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        onClick: this.setButtonChosen,
         backgroundColor: checkoutHover ? '#d4002e' : 'rgb(236, 4, 15)',
         onMouseEnter: this.setCheckoutHover,
         onMouseLeave: this.setCheckoutHover,
         color: "white",
         border: "transparent"
-      }, "Checkout"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, "Checkout")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Border__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        size: "1px",
+        radius: "5px",
+        color: buttonChosen === 'continue shopping' ? 'black' : 'transparent'
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        onClick: this.setButtonChosen,
         backgroundColor: "white",
         color: "black",
         onMouseEnter: this.setHover,
@@ -34745,7 +34773,7 @@ var Checkout = /*#__PURE__*/function (_React$Component) {
         border: hover ? 'grey' : 'black'
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DescriptionDiv, {
         color: hover ? 'grey' : 'black'
-      }, "Continue Shopping"))));
+      }, "Continue Shopping")))));
     }
   }]);
 
@@ -35814,15 +35842,30 @@ var Options = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, Options);
 
     _this = _super.call(this, props);
+    _this.state = {
+      hover: null
+    };
     _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_this));
+    _this.handleHover = _this.handleHover.bind(_assertThisInitialized(_this));
     return _this;
   }
 
   _createClass(Options, [{
-    key: "handleClick",
-    value: function handleClick(e) {
-      var handleOptionClick = this.props.handleOptionClick;
-      handleOptionClick(e.target.value);
+    key: "getBorderColor",
+    value: function getBorderColor(index) {
+      var optionChosenIndex = this.props.optionChosenIndex;
+      var hover = this.state.hover;
+      var color;
+
+      if (index === Number(optionChosenIndex)) {
+        color = 'black';
+      } else if (Number(hover) === index && hover !== null) {
+        color = 'grey';
+      } else {
+        color = 'transparent';
+      }
+
+      return color;
     }
   }, {
     key: "displayOptionChosen",
@@ -35838,25 +35881,49 @@ var Options = /*#__PURE__*/function (_React$Component) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Loading...");
     }
   }, {
+    key: "handleHover",
+    value: function handleHover(e) {
+      var hover = this.state.hover;
+
+      if (!hover) {
+        this.setState({
+          hover: e.target.value
+        });
+      } else {
+        this.setState({
+          hover: null
+        });
+      }
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick(e) {
+      var handleOptionClick = this.props.handleOptionClick;
+      handleOptionClick(e.target.value);
+    }
+  }, {
     key: "displayOptions",
     value: function displayOptions() {
       var _this2 = this;
 
       var _this$props2 = this.props,
           options = _this$props2.options,
-          _id = _this$props2.item._id,
-          optionChosenIndex = _this$props2.optionChosenIndex;
+          _id = _this$props2.item._id;
 
       if (options) {
         return options.map(function (option, index) {
           return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(OptionDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(OptionLabelDiv, {
             value: index
           }, option.label), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Border__WEBPACK_IMPORTED_MODULE_2__["default"], {
-            color: index === Number(optionChosenIndex) ? 'black' : 'transparent'
+            size: "3px",
+            radius: "8px",
+            color: _this2.getBorderColor(index)
           }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Button, {
             type: "button",
             value: index,
             key: _id + option.label,
+            onMouseEnter: _this2.handleHover,
+            onMouseLeave: _this2.handleHover,
             onClick: _this2.handleClick
           }, option.amount)));
         });
@@ -36008,7 +36075,6 @@ var StarReview = /*#__PURE__*/function (_React$Component) {
     key: "starFilled",
     value: function starFilled() {
       var reviews = this.props.reviews;
-      console.log('reviews', reviews);
       var stars = [0, 1, 2, 3, 4];
       var filled = stars.map(function (star) {
         var fill;
@@ -36021,7 +36087,6 @@ var StarReview = /*#__PURE__*/function (_React$Component) {
           fill = 0;
         }
 
-        console.log('fill', fill);
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Star__WEBPACK_IMPORTED_MODULE_2__["default"], {
           fill: fill
         });
@@ -36031,7 +36096,6 @@ var StarReview = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      console.log(this.starFilled());
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, this.starFilled());
     }
   }]);
@@ -36054,7 +36118,7 @@ var StarReview = /*#__PURE__*/function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n  border: 3px solid ", ";\n  padding: 1px;\n  border-radius: 8px;\n  display: inline-block;\n"]);
+  var data = _taggedTemplateLiteral(["\n  border: ", " solid ", ";\n  padding: 2px;\n  border-radius: ", ";\n  display: inline-block;\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -36067,7 +36131,11 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 /* harmony default export */ __webpack_exports__["default"] = (styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].div(_templateObject(), function (props) {
+  return props.size;
+}, function (props) {
   return props.color;
+}, function (props) {
+  return props.radius;
 }));
 
 /***/ }),

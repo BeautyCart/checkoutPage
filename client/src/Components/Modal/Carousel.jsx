@@ -40,7 +40,6 @@ class Carousel extends React.Component {
   }
 
   setRelatedProducts(products) {
-    console.log(products);
     this.setState({
       relatedProducts: products,
     });

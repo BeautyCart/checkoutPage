@@ -13,7 +13,6 @@ const Container = styled.div`
 class StarReview extends React.Component {
   starFilled() {
     const { reviews } = this.props;
-    console.log('reviews', reviews);
     const stars = [0, 1, 2, 3, 4];
     const filled = stars.map((star) => {
       let fill;
@@ -24,7 +23,6 @@ class StarReview extends React.Component {
       } else {
         fill = 0;
       }
-      console.log('fill', fill);
       return (
         <Star fill={fill} />
       );
@@ -33,7 +31,6 @@ class StarReview extends React.Component {
   }
 
   render() {
-    console.log(this.starFilled());
     return (
       <Container>
         {this.starFilled()}
