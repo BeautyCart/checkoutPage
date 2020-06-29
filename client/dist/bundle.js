@@ -33901,7 +33901,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
 function _templateObject8() {
-  var data = _taggedTemplateLiteral(["\n  color: ", "\n"]);
+  var data = _taggedTemplateLiteral(["\n  color: ", ";\n"]);
 
   _templateObject8 = function _templateObject8() {
     return data;
@@ -34014,7 +34014,8 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
       showModal: false,
       quantity: 1,
       loved: false,
-      tempLoved: false
+      tempLoved: false,
+      addToBasketHover: false
     };
     _this.closeModal = _this.closeModal.bind(_assertThisInitialized(_this));
     _this.openModal = _this.openModal.bind(_assertThisInitialized(_this));
@@ -34023,6 +34024,7 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
     _this.svg = _this.svg.bind(_assertThisInitialized(_this));
     _this.setLoved = _this.setLoved.bind(_assertThisInitialized(_this));
     _this.setTempLoved = _this.setTempLoved.bind(_assertThisInitialized(_this));
+    _this.setAddToBasketHover = _this.setAddToBasketHover.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -34044,7 +34046,7 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
     }
   }, {
     key: "setTempLoved",
-    value: function setTempLoved(reset) {
+    value: function setTempLoved() {
       this.setState(function (state) {
         return {
           tempLoved: !state.tempLoved
@@ -34052,11 +34054,18 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "closeModal",
-    value: function closeModal() {
-      this.setState({
-        showModal: false
+    key: "setAddToBasketHover",
+    value: function setAddToBasketHover() {
+      this.setState(function (state) {
+        return {
+          addToBasketHover: !state.addToBasketHover
+        };
       });
+    }
+  }, {
+    key: "handleSelect",
+    value: function handleSelect(e) {
+      this.setQuantity(Number(e.target.value));
     }
   }, {
     key: "openModal",
@@ -34066,9 +34075,11 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
-    key: "handleSelect",
-    value: function handleSelect(e) {
-      this.setQuantity(Number(e.target.value));
+    key: "closeModal",
+    value: function closeModal() {
+      this.setState({
+        showModal: false
+      });
     }
   }, {
     key: "svg",
@@ -34119,7 +34130,8 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
       var _this$state3 = this.state,
           showModal = _this$state3.showModal,
           quantity = _this$state3.quantity,
-          tempLoved = _this$state3.tempLoved;
+          tempLoved = _this$state3.tempLoved,
+          addToBasketHover = _this$state3.addToBasketHover;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(QuantityDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DropDown, {
         value: quantity,
         onChange: this.handleSelect
@@ -34154,11 +34166,16 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
         key: 10,
         value: 10
       }, "10"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AddToBasketOrLovesDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ButtonsDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
-        redBtn: true,
+        backgroundColor: addToBasketHover ? '#d4002e' : 'rgb(236, 4, 15)',
+        color: "white",
         border: "transparent",
         onClick: this.openModal,
+        onMouseEnter: this.setAddToBasketHover,
+        onMouseLeave: this.setAddToBasketHover,
         type: "button"
       }, "Add To Basket"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        backgroundColor: "white",
+        color: "black",
         border: tempLoved ? 'grey' : 'black',
         type: "button",
         onClick: this.setLoved,
@@ -34605,6 +34622,16 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _templateObject4() {
+  var data = _taggedTemplateLiteral(["\n  color: ", ";\n"]);
+
+  _templateObject4 = function _templateObject4() {
+    return data;
+  };
+
+  return data;
+}
+
 function _templateObject3() {
   var data = _taggedTemplateLiteral(["\n  width: 255px;\n  height: 88px;\n  display: flex;\n  justify-content: space-between;\n  flex-direction: column;\n"]);
 
@@ -34643,36 +34670,82 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
 var BasketTotalDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2());
 var ButtonsDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject3());
+var DescriptionDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject4(), function (props) {
+  return props.color;
+});
 
 var Checkout = /*#__PURE__*/function (_React$Component) {
   _inherits(Checkout, _React$Component);
 
   var _super = _createSuper(Checkout);
 
-  function Checkout() {
-    _classCallCheck(this, Checkout);
-
-    return _super.apply(this, arguments);
-  }
-
-  _createClass(Checkout, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          price = _this$props.price,
-          quantity = _this$props.quantity;
-      var quantityNumber = Number(quantity);
-      console.log(quantityNumber, _typeof(quantityNumber));
-      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BasketTotalDiv, null, "Basket Total (", quantity, ' ', quantityNumber > 1 ? 'items' : 'item', ":", ' ', Checkout.parsePrice(price, quantityNumber), ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ButtonsDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        redBtn: true
-      }, "Checkout"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_2__["default"], null, "Continue Shopping")));
-    }
-  }], [{
+  _createClass(Checkout, null, [{
     key: "parsePrice",
     value: function parsePrice(inputPrice, quantity) {
       var price = inputPrice.slice(1);
       price = "$".concat(parseFloat(price) * quantity, ".00");
       return price;
+    }
+  }]);
+
+  function Checkout(props) {
+    var _this;
+
+    _classCallCheck(this, Checkout);
+
+    _this = _super.call(this, props);
+    _this.state = {
+      hover: false,
+      checkoutHover: false
+    };
+    _this.setHover = _this.setHover.bind(_assertThisInitialized(_this));
+    _this.setCheckoutHover = _this.setCheckoutHover.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(Checkout, [{
+    key: "setHover",
+    value: function setHover() {
+      this.setState(function (state) {
+        return {
+          hover: !state.hover
+        };
+      });
+    }
+  }, {
+    key: "setCheckoutHover",
+    value: function setCheckoutHover() {
+      this.setState(function (state) {
+        return {
+          checkoutHover: !state.checkoutHover
+        };
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this$props = this.props,
+          price = _this$props.price,
+          quantity = _this$props.quantity;
+      var _this$state = this.state,
+          hover = _this$state.hover,
+          checkoutHover = _this$state.checkoutHover;
+      var quantityNumber = Number(quantity);
+      return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(BasketTotalDiv, null, "Basket Total (", quantity, ' ', quantityNumber > 1 ? 'items' : 'item', ":", ' ', Checkout.parsePrice(price, quantityNumber), ")"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ButtonsDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        backgroundColor: checkoutHover ? '#d4002e' : 'rgb(236, 4, 15)',
+        onMouseEnter: this.setCheckoutHover,
+        onMouseLeave: this.setCheckoutHover,
+        color: "white",
+        border: "transparent"
+      }, "Checkout"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        backgroundColor: "white",
+        color: "black",
+        onMouseEnter: this.setHover,
+        onMouseLeave: this.setHover,
+        border: hover ? 'grey' : 'black'
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DescriptionDiv, {
+        color: hover ? 'grey' : 'black'
+      }, "Continue Shopping"))));
     }
   }]);
 
@@ -36023,9 +36096,9 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 /* harmony default export */ __webpack_exports__["default"] = (styled_components__WEBPACK_IMPORTED_MODULE_0__["default"].button(_templateObject(), function (props) {
-  return Object.prototype.hasOwnProperty.call(props, 'redBtn') ? 'rgb(255, 255, 255)' : 'black';
+  return props.color;
 }, function (props) {
-  return Object.prototype.hasOwnProperty.call(props, 'redBtn') ? 'rgb(236, 4, 15)' : 'white';
+  return props.backgroundColor;
 }, function (props) {
   return "1px solid ".concat(props.border);
 }, undefined));

@@ -24,6 +24,10 @@ const ButtonsDiv = styled.div`
   flex-direction: column;
 `;
 
+const DescriptionDiv = styled.div`
+  color: ${(props) => props.color};
+`;
+
 class Checkout extends React.Component {
   static parsePrice(inputPrice, quantity) {
     let price = inputPrice.slice(1);
@@ -31,10 +35,32 @@ class Checkout extends React.Component {
     return price;
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      hover: false,
+      checkoutHover: false,
+    };
+    this.setHover = this.setHover.bind(this);
+    this.setCheckoutHover = this.setCheckoutHover.bind(this);
+  }
+
+  setHover() {
+    this.setState((state) => ({
+      hover: !state.hover,
+    }));
+  }
+
+  setCheckoutHover() {
+    this.setState((state) => ({
+      checkoutHover: !state.checkoutHover,
+    }));
+  }
+
   render() {
     const { price, quantity } = this.props;
+    const { hover, checkoutHover } = this.state;
     const quantityNumber = Number(quantity);
-    console.log(quantityNumber, typeof quantityNumber);
     return (
       <Container>
         <BasketTotalDiv>
@@ -48,8 +74,12 @@ class Checkout extends React.Component {
           )
         </BasketTotalDiv>
         <ButtonsDiv>
-          <Button redBtn>Checkout</Button>
-          <Button>Continue Shopping</Button>
+          <Button backgroundColor={checkoutHover ? '#d4002e' : 'rgb(236, 4, 15)'} onMouseEnter={this.setCheckoutHover} onMouseLeave={this.setCheckoutHover} color="white" border="transparent">Checkout</Button>
+          <Button backgroundColor="white" color="black" onMouseEnter={this.setHover} onMouseLeave={this.setHover} border={(hover) ? 'grey' : 'black'}>
+            <DescriptionDiv color={(hover) ? 'grey' : 'black'}>
+              Continue Shopping
+            </DescriptionDiv>
+          </Button>
         </ButtonsDiv>
       </Container>
     );

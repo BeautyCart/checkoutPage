@@ -53,7 +53,7 @@ const Svg = styled.svg`
 `;
 
 const DescriptionDiv = styled.div`
-  color: ${(props) => props.color}
+  color: ${(props) => props.color};
 `;
 
 class ItemCheckout extends React.Component {
@@ -64,6 +64,7 @@ class ItemCheckout extends React.Component {
       quantity: 1,
       loved: false,
       tempLoved: false,
+      addToBasketHover: false,
     };
     this.closeModal = this.closeModal.bind(this);
     this.openModal = this.openModal.bind(this);
@@ -72,6 +73,7 @@ class ItemCheckout extends React.Component {
     this.svg = this.svg.bind(this);
     this.setLoved = this.setLoved.bind(this);
     this.setTempLoved = this.setTempLoved.bind(this);
+    this.setAddToBasketHover = this.setAddToBasketHover.bind(this);
   }
 
   setQuantity(quantity) {
@@ -86,16 +88,20 @@ class ItemCheckout extends React.Component {
     }));
   }
 
-  setTempLoved(reset) {
+  setTempLoved() {
     this.setState((state) => ({
       tempLoved: !state.tempLoved,
     }));
   }
 
-  closeModal() {
-    this.setState({
-      showModal: false,
-    });
+  setAddToBasketHover() {
+    this.setState((state) => ({
+      addToBasketHover: !state.addToBasketHover,
+    }));
+  }
+
+  handleSelect(e) {
+    this.setQuantity(Number(e.target.value));
   }
 
   openModal() {
@@ -104,8 +110,10 @@ class ItemCheckout extends React.Component {
     });
   }
 
-  handleSelect(e) {
-    this.setQuantity(Number(e.target.value));
+  closeModal() {
+    this.setState({
+      showModal: false,
+    });
   }
 
   svg() {
@@ -137,7 +145,7 @@ class ItemCheckout extends React.Component {
   render() {
     const { item, optionChosenIndex } = this.props;
     const {
-      showModal, quantity, tempLoved,
+      showModal, quantity, tempLoved, addToBasketHover,
     } = this.state;
     return (
       <Container>
@@ -157,8 +165,18 @@ class ItemCheckout extends React.Component {
         </QuantityDiv>
         <AddToBasketOrLovesDiv>
           <ButtonsDiv>
-            <Button redBtn border="transparent" onClick={this.openModal} type="button">Add To Basket</Button>
-            <Button border={(tempLoved) ? 'grey' : 'black'} type="button" onClick={this.setLoved} onMouseEnter={this.setTempLoved} onMouseLeave={this.setTempLoved}>
+            <Button
+              backgroundColor={(addToBasketHover) ? '#d4002e' : 'rgb(236, 4, 15)'}
+              color="white"
+              border="transparent"
+              onClick={this.openModal}
+              onMouseEnter={this.setAddToBasketHover}
+              onMouseLeave={this.setAddToBasketHover}
+              type="button"
+            >
+              Add To Basket
+            </Button>
+            <Button backgroundColor="white" color="black" border={(tempLoved) ? 'grey' : 'black'} type="button" onClick={this.setLoved} onMouseEnter={this.setTempLoved} onMouseLeave={this.setTempLoved}>
               <AddToLovesDiv>
                 {this.svg()}
                 <DescriptionDiv color={(tempLoved) ? 'grey' : 'black'}>
