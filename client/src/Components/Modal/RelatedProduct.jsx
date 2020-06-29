@@ -12,6 +12,10 @@ const Container = styled.div`
 const Image = styled.img`
   width: 97px;
   height: 97px;
+  ${this}:hover {
+    opacity: 0.5;
+  }
+  transition: .2s;
 `;
 
 const ImageDiv = styled.div`
@@ -27,7 +31,7 @@ const BrandAndItemDiv = styled.div`
   text-align: center;
   flex-direction: column;
   justify-content: flex-start;
-  ${this}:Hover {
+  ${this}:hover {
     text-decoration: underline;
   }
 `;
