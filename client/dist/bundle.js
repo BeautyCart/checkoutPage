@@ -33877,6 +33877,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _Modal__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Modal */ "./src/Components/Modal/index.jsx");
 /* harmony import */ var _elements_Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../elements/Button */ "./src/elements/Button.js");
+/* harmony import */ var _elements_Border__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../elements/Border */ "./src/elements/Border.js");
 function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -33985,6 +33986,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
+
 var QuantityDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
 var DropDown = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].select(_templateObject2());
 var ButtonsDiv = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject3());
@@ -34013,6 +34015,7 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
       showModal: false,
       quantity: 1,
       loved: false,
+      lovedChosen: false,
       tempLoved: false,
       addToBasketHover: false
     };
@@ -34024,6 +34027,7 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
     _this.setLoved = _this.setLoved.bind(_assertThisInitialized(_this));
     _this.setTempLoved = _this.setTempLoved.bind(_assertThisInitialized(_this));
     _this.setAddToBasketHover = _this.setAddToBasketHover.bind(_assertThisInitialized(_this));
+    _this.setLovedChosen = _this.setLovedChosen.bind(_assertThisInitialized(_this));
     return _this;
   }
 
@@ -34040,6 +34044,15 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
       this.setState(function (state) {
         return {
           loved: !state.loved
+        };
+      });
+    }
+  }, {
+    key: "setLovedChosen",
+    value: function setLovedChosen() {
+      this.setState(function (state) {
+        return {
+          lovedChosen: !state.lovedChosen
         };
       });
     }
@@ -34069,9 +34082,14 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
   }, {
     key: "openModal",
     value: function openModal() {
+      var lovedChosen = this.state.lovedChosen;
       this.setState({
         showModal: true
       });
+
+      if (lovedChosen === true) {
+        this.setLovedChosen();
+      }
     }
   }, {
     key: "closeModal",
@@ -34130,7 +34148,8 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
           showModal = _this$state3.showModal,
           quantity = _this$state3.quantity,
           tempLoved = _this$state3.tempLoved,
-          addToBasketHover = _this$state3.addToBasketHover;
+          addToBasketHover = _this$state3.addToBasketHover,
+          lovedChosen = _this$state3.lovedChosen;
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(Container, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(QuantityDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DropDown, {
         value: quantity,
         onChange: this.handleSelect
@@ -34164,7 +34183,12 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
       }, "9"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
         key: 10,
         value: 10
-      }, "10"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AddToBasketOrLovesDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ButtonsDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, "10"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AddToBasketOrLovesDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(ButtonsDiv, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Border__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        size: "1px",
+        radius: "5px",
+        value: "add to basket",
+        color: showModal === true ? 'black' : 'transparent'
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
         backgroundColor: addToBasketHover ? '#d4002e' : 'rgb(236, 4, 15)',
         color: "white",
         border: "transparent",
@@ -34172,7 +34196,13 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
         onMouseEnter: this.setAddToBasketHover,
         onMouseLeave: this.setAddToBasketHover,
         type: "button"
-      }, "Add To Basket"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, "Add To Basket")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Border__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        size: "1px",
+        radius: "5px",
+        value: "add to loves",
+        onClick: this.setLovedChosen,
+        color: lovedChosen ? 'black' : 'transparent'
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_elements_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
         backgroundColor: "white",
         color: "black",
         border: tempLoved ? 'grey' : 'black',
@@ -34180,9 +34210,11 @@ var ItemCheckout = /*#__PURE__*/function (_React$Component) {
         onClick: this.setLoved,
         onMouseEnter: this.setTempLoved,
         onMouseLeave: this.setTempLoved
-      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AddToLovesDiv, null, this.svg(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DescriptionDiv, {
+      }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(AddToLovesDiv, {
+        value: "add to loves"
+      }, this.svg(), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(DescriptionDiv, {
         color: tempLoved ? 'grey' : 'black'
-      }, this.description()))))), showModal ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Modal__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, this.description())))))), showModal ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Modal__WEBPACK_IMPORTED_MODULE_2__["default"], {
         item: item,
         optionChosenIndex: optionChosenIndex,
         closeModal: this.closeModal,
@@ -35385,7 +35417,7 @@ function _templateObject5() {
 }
 
 function _templateObject4() {
-  var data = _taggedTemplateLiteral(["\n  width: 18px;\n  height: 30px;\n  position: absolute;\n  right: 0;\n  top: 50%;\n  transform: translateY(-50%);\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 18px;\n  height: 30px;\n  position: absolute;\n  right: 0;\n  top: 50%;\n  transform: translateY(-50%);\n  opacity: ", ";\n"]);
 
   _templateObject4 = function _templateObject4() {
     return data;
@@ -35395,7 +35427,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteral(["\n  width: 18px;\n  height: 30px;\n  position: absolute;\n  left: 0px;\n  top: 50%;\n  transform: translateY(-50%);\n"]);
+  var data = _taggedTemplateLiteral(["\n  width: 18px;\n  height: 30px;\n  position: absolute;\n  left: 0px;\n  top: 50%;\n  transform: translateY(-50%);\n  opacity: ", ";\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -35431,8 +35463,12 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 var Container = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
 var ArrowButton = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].button(_templateObject2(), undefined);
-var SvgLeft = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].svg(_templateObject3());
-var SvgRight = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].svg(_templateObject4());
+var SvgLeft = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].svg(_templateObject3(), function (props) {
+  return props.opactity;
+});
+var SvgRight = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].svg(_templateObject4(), function (props) {
+  return props.opactity;
+});
 var TrackContainer = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject5());
 var RelatedProductsContainer = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject6(), function (props) {
   return "translateX(".concat(-534 * props.page, "px)");
@@ -35478,6 +35514,7 @@ var RelatedProducts = /*#__PURE__*/function (_React$Component) {
         onClick: this.handleClick,
         type: "button"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SvgLeft, {
+        opacity: page === 0 ? 0.2 : 1,
         id: "left",
         viewBox: "0 0 16 32"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
@@ -35495,6 +35532,7 @@ var RelatedProducts = /*#__PURE__*/function (_React$Component) {
         onClick: this.handleClick,
         type: "button"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SvgRight, {
+        opacity: page === 2 ? 0.2 : 1,
         id: "right",
         viewBox: "0 0 16 32"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {

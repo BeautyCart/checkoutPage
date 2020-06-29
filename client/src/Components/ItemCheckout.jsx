@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Modal from './Modal';
 import Button from '../elements/Button';
+import Border from '../elements/Border';
 
 const QuantityDiv = styled.div`
   width: 54px;
@@ -63,6 +64,7 @@ class ItemCheckout extends React.Component {
       showModal: false,
       quantity: 1,
       loved: false,
+      lovedChosen: false,
       tempLoved: false,
       addToBasketHover: false,
     };
@@ -74,6 +76,7 @@ class ItemCheckout extends React.Component {
     this.setLoved = this.setLoved.bind(this);
     this.setTempLoved = this.setTempLoved.bind(this);
     this.setAddToBasketHover = this.setAddToBasketHover.bind(this);
+    this.setLovedChosen = this.setLovedChosen.bind(this);
   }
 
   setQuantity(quantity) {
@@ -85,6 +88,12 @@ class ItemCheckout extends React.Component {
   setLoved() {
     this.setState((state) => ({
       loved: !state.loved,
+    }));
+  }
+
+  setLovedChosen() {
+    this.setState((state) => ({
+      lovedChosen: !state.lovedChosen,
     }));
   }
 
@@ -105,9 +114,13 @@ class ItemCheckout extends React.Component {
   }
 
   openModal() {
+    const { lovedChosen } = this.state;
     this.setState({
       showModal: true,
     });
+    if (lovedChosen === true) {
+      this.setLovedChosen();
+    }
   }
 
   closeModal() {
@@ -145,7 +158,7 @@ class ItemCheckout extends React.Component {
   render() {
     const { item, optionChosenIndex } = this.props;
     const {
-      showModal, quantity, tempLoved, addToBasketHover,
+      showModal, quantity, tempLoved, addToBasketHover, lovedChosen,
     } = this.state;
     return (
       <Container>
@@ -165,25 +178,37 @@ class ItemCheckout extends React.Component {
         </QuantityDiv>
         <AddToBasketOrLovesDiv>
           <ButtonsDiv>
-            <Button
-              backgroundColor={(addToBasketHover) ? '#d4002e' : 'rgb(236, 4, 15)'}
-              color="white"
-              border="transparent"
-              onClick={this.openModal}
-              onMouseEnter={this.setAddToBasketHover}
-              onMouseLeave={this.setAddToBasketHover}
-              type="button"
-            >
-              Add To Basket
-            </Button>
-            <Button backgroundColor="white" color="black" border={(tempLoved) ? 'grey' : 'black'} type="button" onClick={this.setLoved} onMouseEnter={this.setTempLoved} onMouseLeave={this.setTempLoved}>
-              <AddToLovesDiv>
-                {this.svg()}
-                <DescriptionDiv color={(tempLoved) ? 'grey' : 'black'}>
-                  {this.description()}
-                </DescriptionDiv>
-              </AddToLovesDiv>
-            </Button>
+            <Border size="1px" radius="5px" value="add to basket" color={(showModal === true) ? 'black' : 'transparent'}>
+              <Button
+                backgroundColor={(addToBasketHover) ? '#d4002e' : 'rgb(236, 4, 15)'}
+                color="white"
+                border="transparent"
+                onClick={this.openModal}
+                onMouseEnter={this.setAddToBasketHover}
+                onMouseLeave={this.setAddToBasketHover}
+                type="button"
+              >
+                Add To Basket
+              </Button>
+            </Border>
+            <Border size="1px" radius="5px" value="add to loves" onClick={this.setLovedChosen} color={(lovedChosen) ? 'black' : 'transparent'}>
+              <Button
+                backgroundColor="white"
+                color="black"
+                border={(tempLoved) ? 'grey' : 'black'}
+                type="button"
+                onClick={this.setLoved}
+                onMouseEnter={this.setTempLoved}
+                onMouseLeave={this.setTempLoved}
+              >
+                <AddToLovesDiv value="add to loves">
+                  {this.svg()}
+                  <DescriptionDiv color={(tempLoved) ? 'grey' : 'black'}>
+                    {this.description()}
+                  </DescriptionDiv>
+                </AddToLovesDiv>
+              </Button>
+            </Border>
           </ButtonsDiv>
         </AddToBasketOrLovesDiv>
         {showModal ? (

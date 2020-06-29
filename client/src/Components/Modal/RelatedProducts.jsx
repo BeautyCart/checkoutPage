@@ -28,6 +28,7 @@ const SvgLeft = styled.svg`
   left: 0px;
   top: 50%;
   transform: translateY(-50%);
+  opacity: ${(props) => (props.opactity)};
 `;
 
 const SvgRight = styled.svg`
@@ -37,6 +38,7 @@ const SvgRight = styled.svg`
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  opacity: ${(props) => (props.opactity)};
 `;
 
 const TrackContainer = styled.div`
@@ -77,7 +79,7 @@ class RelatedProducts extends React.Component {
     return (
       <Container>
         <ArrowButton onClick={this.handleClick} type="button">
-          <SvgLeft id="left" viewBox="0 0 16 32">
+          <SvgLeft opacity={(page === 0) ? 0.2 : 1} id="left" viewBox="0 0 16 32">
             <path
               d="M2.2 16.052l13.5-14.33c.1-.098.3-.397.3-.695 0-.498-.4-.995-.9-.995-.3 0-.5.2-.6.298L.4 15.256c-.2.298-.4.497-.4.796 0 .298.1.398.2.497l.1.1L14.5 31.67c.1.1.3.3.6.3.5 0 .9-.5.9-.996 0-.3-.2-.498-.3-.697L2.2 16.05z"
             />
@@ -98,7 +100,7 @@ class RelatedProducts extends React.Component {
           </RelatedProductsContainer>
         </TrackContainer>
         <ArrowButton onClick={this.handleClick} type="button">
-          <SvgRight id="right" viewBox="0 0 16 32">
+          <SvgRight opacity={(page === 2) ? 0.2 : 1} id="right" viewBox="0 0 16 32">
             <path
               d="M13.8 15.952L.3 30.28c-.1.1-.3.398-.3.697 0 .497.4.995.9.995.3 0 .5-.2.6-.3L15.6 16.75c.2-.298.4-.497.4-.796 0-.298-.1-.398-.2-.497l-.1-.1L1.5.33C1.4.23 1.2.032.9.032c-.5 0-.9.497-.9.995 0 .298.2.497.3.696l13.5 14.23z"
             />
