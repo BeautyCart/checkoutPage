@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const Product = require('./models/product.js');
 
-const port = 3000;
+const port = 4000;
 
 app.use(express.static('../client/dist'));
 
