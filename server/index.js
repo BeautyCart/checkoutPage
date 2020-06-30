@@ -21,7 +21,7 @@ app.get('/checkout/products', (req, res) => {
 //     .catch((err) => res.sendStatus(400));
 // });
 
-app.get('/relatedProducts/:productType', (req, res) => {
+app.get('/checkout/relatedProducts/:productType', (req, res) => {
   Product.find({ itemName: { $regex: req.params.productType } }).limit(12)
     .then((products) => res.send(products))
     .catch((err) => res.sendStatus(400));

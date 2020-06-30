@@ -53,7 +53,7 @@ class Carousel extends React.Component {
 
   getProducts() {
     const { typeOfProduct } = this.props;
-    axios.get(`/relatedProducts/${typeOfProduct}`)
+    axios.get(`/checkout/relatedProducts/${typeOfProduct}`)
       .then((results) => this.setRelatedProducts(results.data))
       .catch((err) => console.log(err));
   }
