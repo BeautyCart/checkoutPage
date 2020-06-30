@@ -1,13 +1,12 @@
 const express = require('express');
-const cors = require('cors');
 
 const app = express();
-app.use(cors());
 const Product = require('./models/product.js');
 
 const port = 4000;
 
-app.use(express.static('../client/dist'));
+app.use('/checkout', express.static('../client/dist'));
+app.use('/', express.static('../client/dist'));
 
 app.get('/checkout/products', (req, res) => {
   Product.find()
