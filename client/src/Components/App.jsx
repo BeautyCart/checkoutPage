@@ -39,7 +39,7 @@ class App extends React.Component {
   }
 
   static getProducts() {
-    return axios.get('/product');
+    return axios.get('/checkout/products');
   }
 
   static getRandomIndex(min, max) {

@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: '/Users/jenniferxiong/HRSF128/checkoutPage/client/src/index.jsx',
+  entry: `${__dirname}/src/index.jsx`,
   module: {
     rules: [
       {
