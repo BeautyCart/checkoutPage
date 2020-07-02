@@ -40,9 +40,7 @@ class App extends React.Component {
   static getProducts() {
     console.log('pathname', window.location.pathname)
     let path = window.location.pathname;
-    let splitPath = path.split('/');
-    splitPath = splitPath.filter(word => word !== '');
-    const id = splitPath[splitPath.length - 1];
+    let id = path.split('/').filter(word => word !== '').pop();
     return axios.get(`/checkout/products/${id}`);
   }
 
