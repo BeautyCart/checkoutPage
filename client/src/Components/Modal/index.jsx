@@ -75,7 +75,7 @@ class Modal extends React.Component {
           <Header item={item} />
           <MainDiv>
             <TopDiv>
-              <ItemInfo item={item} optionChosenIndex={optionChosenIndex} />
+              <ItemInfo item={item} optionChosenIndex={optionChosenIndex} quantity={quantity} />
               <Checkout price={item.options[optionChosenIndex].price} quantity={quantity} />
             </TopDiv>
             <MiddleDiv>

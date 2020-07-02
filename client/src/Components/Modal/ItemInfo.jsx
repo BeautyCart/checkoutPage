@@ -54,7 +54,7 @@ function ItemInfo(props) {
   const {
     item: {
       image, brand, itemName, options,
-    }, optionChosenIndex,
+    }, optionChosenIndex, quantity,
   } = props;
   return (
     <Container>
@@ -67,7 +67,9 @@ function ItemInfo(props) {
           {' '}
           {options[optionChosenIndex].label}
           {' '}
-          • QTY 1
+          • QTY
+          {' '}
+          {quantity}
         </OptionAndQuantityDiv>
         <SizeDiv>
           SIZE:

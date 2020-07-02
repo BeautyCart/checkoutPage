@@ -26,34 +26,38 @@ class App extends React.Component {
       // carouselItems:[],
       optionChosenIndex: undefined,
     };
-    this.setRandomProduct = this.setRandomProduct.bind(this);
     this.setCurrentItem = this.setCurrentItem.bind(this);
     this.handleOptionClick = this.handleOptionClick.bind(this);
   }
 
   componentDidMount() {
     App.getProducts()
-      .then((response) => this.setRandomProduct(response.data))
+      .then((response) => this.setCurrentItem(response.data))
       .then(() => this.setOptionChosenIndex(0))
       .catch((err) => console.log('Error getting random product', err));
   }
 
   static getProducts() {
-    return axios.get('/checkout/products');
+    console.log('pathname', window.location.pathname)
+    let path = window.location.pathname;
+    let splitPath = path.split('/');
+    splitPath = splitPath.filter(word => word !== '');
+    const id = splitPath[splitPath.length - 1];
+    return axios.get(`/checkout/products/${id}`);
   }
 
   static getRandomIndex(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
-  setRandomProduct(productsData) {
-    const index = App.getRandomIndex(0, productsData.length - 1);
-    return this.setCurrentItem(productsData[index]);
-  }
+  // setRandomProduct(productsData) {
+  //   const index = App.getRandomIndex(0, productsData.length - 1);
+  //   return this.setCurrentItem(productsData[index]);
+  // }
 
   setCurrentItem(productData) {
     this.setState({
-      currentItem: productData,
+      currentItem: productData[0],
     });
     return productData;
   }

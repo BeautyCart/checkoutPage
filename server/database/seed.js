@@ -1,12 +1,16 @@
 const faker = require('faker');
 const Product = require('../models/product.js');
 const { db } = require('../models/product.js');
-
-db.dropCollection('products', (err, res) => console.log('dropped previous products collection'));
+const mongoose = require('./index.js');
 
 const getRandomInt = (min, max) => Math.random() * (max - min) + min;
 
 const capitalize = (word) => word.charAt(0).toUpperCase() + word.slice(1);
+
+const getIdWithPadding = (id) => {
+  const stringedId = id.toString();
+  return stringedId.padStart(4, '0');
+};
 
 const getImage = () => {
   const index = Math.floor(getRandomInt(0, 10));
@@ -41,32 +45,37 @@ const getSize = () => {
   const index = Math.ceil(getRandomInt(0, 2));
   if (index === 1) {
     sizes = [{ label: 'Standard size', amount: `${Number.parseFloat(getRandomInt(5, 10)).toFixed(1)} oz/ ${Math.floor(getRandomInt(80, 230))} mL`, price: `$${Math.floor(getRandomInt(20, 50))}.00` },
-      { label: 'Mini size', amount: `${Number.parseFloat(getRandomInt(1, 5)).toFixed(1)} oz/ ${Math.floor(getRandomInt(10, 50))} mL`, price: `$${Math.floor(getRandomInt(10, 20))}.00` }];
+    { label: 'Mini size', amount: `${Number.parseFloat(getRandomInt(1, 5)).toFixed(1)} oz/ ${Math.floor(getRandomInt(10, 50))} mL`, price: `$${Math.floor(getRandomInt(10, 20))}.00` }];
     return sizes;
   }
   if (index === 2) {
     sizes = [{ label: 'Value size', amount: `${Number.parseFloat(getRandomInt(10, 13)).toFixed(1)} oz/ ${Math.floor(getRandomInt(150, 230))} mL`, price: `$${Math.floor(getRandomInt(50, 90))}.00` },
-      { label: 'Standard size', amount: `${Number.parseFloat(getRandomInt(5, 10)).toFixed(1)} oz/ ${Math.floor(getRandomInt(50, 150))} mL`, price: `$${Math.floor(getRandomInt(20, 50))}.00` },
-      { label: 'Mini size', amount: `${Number.parseFloat(getRandomInt(1, 5)).toFixed(1)} oz/ ${Math.floor(getRandomInt(10, 50))} mL`, price: `$${Math.floor(getRandomInt(10, 20))}.00` }];
+    { label: 'Standard size', amount: `${Number.parseFloat(getRandomInt(5, 10)).toFixed(1)} oz/ ${Math.floor(getRandomInt(50, 150))} mL`, price: `$${Math.floor(getRandomInt(20, 50))}.00` },
+    { label: 'Mini size', amount: `${Number.parseFloat(getRandomInt(1, 5)).toFixed(1)} oz/ ${Math.floor(getRandomInt(10, 50))} mL`, price: `$${Math.floor(getRandomInt(10, 20))}.00` }];
     return sizes;
   }
 };
 
-for (let i = 0; i < 200; i++) {
-  Product.create({
-    image: getImage(),
-    brand: capitalize(faker.lorem.word()),
-    itemName: getRandomProduct(),
-    reviews: getReview(),
-    reviewAmount: faker.random.number(),
-    hearts: faker.random.number(),
-    options: getSize(),
-  },
-  (err, results) => {
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(results);
+let promises = [];
+
+db.dropCollection('products')
+  .then(() => {
+    for (let i = 0; i < 100; i++) {
+      const promise = Product.create({
+        count: getIdWithPadding(i + 1),
+        image: getImage(),
+        brand: capitalize(faker.lorem.word()),
+        itemName: getRandomProduct(),
+        reviews: getReview(),
+        reviewAmount: faker.random.number(),
+        hearts: faker.random.number(),
+        options: getSize(),
+      });
+      promise
+        .then((result) => console.log(result));
+      promises.push(promise);
     }
+    Promise.all(promises)
+      .then(() => mongoose.connection.close())
+      .catch((err) => console.log(err));
   });
-}
