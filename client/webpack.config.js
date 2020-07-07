@@ -16,8 +16,8 @@ module.exports = {
       },
     ],
   },
-  mode: 'development',
-  devtool: 'source-map',
+  mode: 'production',
+  // devtool: 'source-map',
   output: {
     path: path.join(__dirname, '/dist'),
     filename: 'bundle.js',

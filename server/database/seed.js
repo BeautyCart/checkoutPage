@@ -58,24 +58,44 @@ const getSize = () => {
 
 let promises = [];
 
-db.dropCollection('products')
-  .then(() => {
-    for (let i = 0; i < 100; i++) {
-      const promise = Product.create({
-        count: getIdWithPadding(i + 1),
-        image: getImage(),
-        brand: capitalize(faker.lorem.word()),
-        itemName: getRandomProduct(),
-        reviews: getReview(),
-        reviewAmount: faker.random.number(),
-        hearts: faker.random.number(),
-        options: getSize(),
-      });
-      promise
-        .then((result) => console.log(result));
-      promises.push(promise);
-    }
-    Promise.all(promises)
-      .then(() => mongoose.connection.close())
-      .catch((err) => console.log(err));
+//RUN ON LOCAL MACHINE WITHOUT DOCKER 
+// db.dropCollection('products')
+//   .then(() => {
+//     for (let i = 0; i < 100; i++) {
+//       const promise = Product.create({
+//         count: getIdWithPadding(i + 1),
+//         image: getImage(),
+//         brand: capitalize(faker.lorem.word()),
+//         itemName: getRandomProduct(),
+//         reviews: getReview(),
+//         reviewAmount: faker.random.number(),
+//         hearts: faker.random.number(),
+//         options: getSize(),
+//       });
+//       promise
+//         .then((result) => console.log(result));
+//       promises.push(promise);
+//     }
+//     Promise.all(promises)
+//       .then(() => mongoose.connection.close())
+//       .catch((err) => console.log(err));
+//   });
+
+for (let i = 0; i < 100; i++) {
+  const promise = Product.create({
+    count: getIdWithPadding(i + 1),
+    image: getImage(),
+    brand: capitalize(faker.lorem.word()),
+    itemName: getRandomProduct(),
+    reviews: getReview(),
+    reviewAmount: faker.random.number(),
+    hearts: faker.random.number(),
+    options: getSize(),
   });
+  promise
+    .then((result) => console.log(result));
+  promises.push(promise);
+}
+Promise.all(promises)
+  .then(() => mongoose.connection.close())
+  .catch((err) => console.log(err));

@@ -19,7 +19,7 @@ const GreyBackgroundDiv = styled.div`
 
 const ModalDiv = styled.div`
   width: 650px;
-  height: 668px;
+  max-height: 668px;
   margin: auto;
   margin-top: 62px;
   background-color: white;

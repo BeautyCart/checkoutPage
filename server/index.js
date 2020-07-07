@@ -5,8 +5,8 @@ const Product = require('./models/product.js');
 
 const port = 4000;
 
-// app.use('/checkout/:productId', express.static('../client/dist'));
 app.use('/checkout', express.static('../client/dist'));
+app.use('/checkout/:productId', express.static('../client/dist'));
 
 app.get('/checkout/products', (req, res) => {
   console.log("YOU JUST SEARCHED FOR ALL PRODUCTS");
